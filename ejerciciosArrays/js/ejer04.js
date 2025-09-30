@@ -10,8 +10,5 @@ function ejer04(){
         }
         return 0;
     });
-    for(array  arrayDatos){
-
-    }
 }
 ejer04();
