@@ -13,7 +13,7 @@ function parte01(){
 function parte02(){
     let numero = Number(prompt('número'));
     let cubo = 1;
-    if(numero % 1 == 0){
+    if(numero % 2 == 0){
         for(i = 0; i <3; i++){
         cubo *= numero
         }
@@ -35,5 +35,21 @@ function parte03(){
 
 function parte04(){
     let cadena = prompt('cadena');
+    cadena = cadena.toLocaleLowerCase();
+    let nuevaCadenaPares = '';
+    for(i = 0; i < cadena.length; i++){
+        if(i % 2 == 0){
+            nuevaCadenaPares = nuevaCadenaPares + cadena.charAt(i);
+            console.log(nuevaCadenaPares);
+            console.log(i); 
+        }
+    }
 
+    console.log(nuevaCadenaPares);
+    if(cadena.indexOf('aviko') == -1){
+        console.log('No se encontro “aviko”');
+    }else{
+        console.log('Se encontro “aviko”');
+    }
 }
+parte04();
