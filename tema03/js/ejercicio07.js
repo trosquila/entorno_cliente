@@ -29,11 +29,32 @@ function parte02(){
     console.info(media.toFixed(1));
     const redondeoPregunta = confirm('Redondear hacia arriba?');
     let arrayRedondeo = [];
-    let memoriaNumeros = 0;
     if(redondeoPregunta == true){
-        arrayNum.forEach(element => {
-            arrayRedondeo.push()
+        arrayRedondeo = arrayNum.map(element => Math.round(element));
+        arrayRedondeo.sort(function (elem1, elem2) {
+            if (elem1 > elem2) {
+                return 1;
+            }if (elem1 < elem2) {
+                return -1;
+            }
+            return 0;
         });
+        let menor = Math.min(...arrayRedondeo);
+        console.log(menor);
+    }else{
+        arrayRedondeo = arrayNum.map(element => Math.floor(element));
+        arrayRedondeo.sort(function (elem1, elem2) {
+            if (elem1 > elem2) {
+                return 1;
+            }if (elem1 < elem2) {
+                return -1;
+            }
+            return 0;
+        });
+        let mayor = Math.max(...arrayRedondeo);
+        console.log(mayor);
     }
-
+    let redondeoFinal = ((arrayRedondeo.reduce((anterior, posterior) => anterior + posterior, 0))/ arrayRedondeo.length).toFixed(2);
+    console.log(redondeoFinal);
 }
+parte02();
