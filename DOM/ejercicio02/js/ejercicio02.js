@@ -7,5 +7,7 @@ function ejer02(){
     console.log(tercerP);
     const ul = document.getElementsByTagName('ul')[0];
     console.log(ul.lastElementChild);
+    const label = document.getElementsByTagName('label')[0];
+    
 }
 ejer02();
