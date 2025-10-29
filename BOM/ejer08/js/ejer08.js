@@ -21,4 +21,4 @@ let btn = document.getElementById('btn').addEventListener('click', function(){
         segundos = 0
         clearInterval(intervalo);
     }
-})
+}) 
