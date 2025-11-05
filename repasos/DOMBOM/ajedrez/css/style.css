@@ -1,0 +1,36 @@
+section{
+    width: 80%;
+    margin: 20px auto;
+    justify-content: center;
+}
+.jugadores{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+}
+.jugadores input{
+    width: 210px;
+    margin: auto;
+}
+.jugadores input[type='button']{
+    width: 50px;
+}
+.tablero{
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 2px solid black;
+    margin: 50px auto;
+}
+.celda{
+    min-height: 200px;
+    border: 1px solid black;
+}
+.celda:hover{
+    background-color: rgb(235, 235, 235);
+}
+.desactivarCelda{
+    pointer-events: none;
+    background-color: rgb(212, 212, 212);
+}
