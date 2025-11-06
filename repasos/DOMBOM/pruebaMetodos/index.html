@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Examen DOM/BOM</title>
+<script defer src="prueba.js"></script>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    }
+
+    h1, h2 {
+    color: #2c3e50;
+    }
+
+    .seccion {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    }
+
+    .parrafo {
+    margin: 10px 0;
+    padding: 5px;
+    }
+
+    .lista li {
+    padding: 5px;
+    margin: 3px 0;
+    }
+
+    .par {
+    background-color: #e0f7fa;
+    }
+
+    .impar {
+    background-color: #fce4ec;
+    }
+
+    .boton {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    }
+
+    .boton:hover {
+    background-color: #2980b9;
+    }
+
+    .resaltado {
+    font-weight: bold;
+    color: #e74c3c;
+    }
+</style>
+</head>
+<body>
+
+<h1 id="tituloPrincipal">Bienvenido al examen DOM/BOM</h1>
+
+<div class="seccion" id="seccionUno">
+    <h2>Sección Uno</h2>
+    <p class="parrafo">Primer párrafo</p>
+    <p class="parrafo resaltado">Segundo párrafo</p>
+    <p class="parrafo">Tercer párrafo</p>
+</div>
+
+<div class="seccion" id="seccionDos">
+    <h2>Lista de elementos</h2>
+    <ul class="lista">
+    <li class="item par">Elemento 1</li>
+    <li class="item impar">Elemento 2</li>
+    <li class="item par">Elemento 3</li>
+    <li class="item impar">Elemento 4</li>
+    </ul>
+</div>
+
+<div class="seccion" id="seccionFormulario">
+    <h2>Formulario</h2>
+    <form id="formulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" size="15"><br><br>
+
+    <label>Sexo:</label>
+    <input type="radio" name="sexo" value="hombre"> Hombre
+    <input type="radio" name="sexo" value="mujer"> Mujer<br><br>
+
+    <label for="colorFavorito">Color favorito:</label>
+    <input type="color" id="colorFavorito"><br><br>
+
+    <input type="button" id="btnAceptar" class="boton" value="Aceptar">
+    <input type="button" id="btnCancelar" class="boton" value="Cancelar">
+    </form>
+</div>
+
+</body>
+</html>
