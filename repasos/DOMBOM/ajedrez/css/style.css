@@ -30,7 +30,16 @@ section{
 .celda:hover{
     background-color: rgb(235, 235, 235);
 }
+.celda:active{
+    background-color: rgb(145, 133, 133);
+}
 .desactivarCelda{
     pointer-events: none;
     background-color: rgb(212, 212, 212);
+}
+.celdaNaranja{
+    background-color: orange;
+}
+.celdaMorada{
+    background-color: rgb(155, 85, 219);
 }
