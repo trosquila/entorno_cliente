@@ -77,15 +77,17 @@ function edadEdadExacta(){
     console.log('Dias totales '+diasTotales);
     
     if (fechaActual > fechaInsertada) {
-        fechaInsertada = new Date(fechaActual.getFullYear() + 1, 6, 4);
+        fechaInsertada = new Date(fechaActual.getFullYear() + 1, fechaInsertada.getMonth(), fechaInsertada.getDate());
     }
+    console.log(fechaInsertada);
+    
     const diferenciaMs = fechaInsertada - fechaActual;
     console.log(mesesRestantes);
     console.log(diasRestantes);
     let diferenciaDias = Math.floor((diferenciaMs) / (1000 * 60 * 60 * 24));
     console.log("Días desde nacimiento:", diferenciaDias);
-
 }
+
 /*
 🎲 Fecha aleatoria
 Genera una fecha aleatoria entre el 1/1/2000 y el 1/1/2025.
