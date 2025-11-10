@@ -41,6 +41,18 @@ function cambiarEstilos() {
     for (let j = 0; j < elementosLi.length; j++) {
         elementosLi[j].classList.add("colorFondoRojo");
     }
-    let h1 = document.getElementsByTagName('h1');
-    let saber
+    let h1 = document.getElementsByTagName('h1')[0];
+    try {
+        let saberColor = h1.classList;
+        saberColor = Array.from(saberColor);
+        if(saberColor.includes('h1Rojo')){
+            h1.classList.add('h1Rojo');
+        }else{
+            h1.classList.remove('h1Rojo');
+        }
+    } catch (error) {
+        h1.classList.add('h1Rojo');
+    }
+    
+
 }
