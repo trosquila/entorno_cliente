@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="./js/ejer04.js"></script>
+    <title>Formulario de Servicio Telefónico</title>
+</head>
+
+<body>
+    <h1>Formulario de Servicio Telefónico</h1>
+    <form action="" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"><br><br>
+
+        <fieldset>
+            <legend>Selecciona la franja horaria:</legend>
+            <label><input type="checkbox" name="franja[]" value="6-14"> 6:00 a 14:00</label><br>
+            <label><input type="checkbox" name="franja[]" value="14-20"> 14:00 a 20:00</label><br>
+            <label><input type="checkbox" name="franja[]" value="20-01"> 20:00 a 01:00</label>
+        </fieldset><br>
+
+        <fieldset>
+            <legend>Tipo de servicio:</legend>
+            <label><input type="radio" name="tipo" value="prepago"> Prepago</label><br>
+            <label><input type="radio" name="tipo" value="postpago"> No prepago</label>
+        </fieldset><br>
+        <label for="compania">Selecciona tu compañía:</label>
+        <select id="compania" name="compania">
+            <option value="Movistar">Movistar</option>
+            <option value="Vodafone">Vodafone</option>
+            <option value="Orange">Orange</option>
+            <option value="Yoigo">Yoigo</option>
+            <option value="Pepephone">Pepephone</option>
+        </select><br><br>
+
+        <label for="observaciones">Observaciones (máx. 140 caracteres):</label><br>
+        <textarea id="observaciones" name="observaciones" maxlength="140" rows="4" cols="50"></textarea><br><br>
+
+        <button type="submit"  id="enviar">Enviar</button>
+    </form>
+</body>
+
+</html>
