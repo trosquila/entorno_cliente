@@ -11,21 +11,30 @@ function comprobarFormulario(event){
             camposFormularioParaChequear.push(element); 
         }
     });
-    let comprobarValueVacio = false;
+    let camposVacios = [];
     camposFormularioParaChequear.forEach(element => {
-        if(element.value != ''){ 
-            if(element.type == 'radio'){
-                if(element.checked == true){
-                    comprobarValueVacio == true;
+        
+        console.log(element);
+        if(element.type == 'radio'){
+            if(element.checked == false){
+                if(!camposVacios.includes('tipo')){
+                    camposVacios.push(element.name);
                 }
-            }else{
-                comprobarValueVacio == true;
             }
-            
-            console.log(element+' '+element.value);
+        }else{
+            if(element.value == ''){
+            camposVacios.push(element.name);
+            }
         }
     });
-    if(comprobarFormulario === true){
-        alert('Rellene todos los campos!!')
+    console.log(camposVacios);
+    
+    if(camposVacios.length > 0){
+        alert('Le falta por rellenar: '+camposVacios.join(' '));
+    }else{
+        mostrarContenidoFormulario(formulario);
     }
+}
+function mostrarContenidoFormulario(formulario){
+    console.log(formulario);
 }
