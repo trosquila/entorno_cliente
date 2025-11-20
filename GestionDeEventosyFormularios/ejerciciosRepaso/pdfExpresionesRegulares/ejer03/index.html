@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Formulario Elegante</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="./js/script.js"></script>
+    </head>
+
+    <body>
+
+        <div class="form-container">
+            <h2>Formulario de Información</h2>
+
+            <form>
+                <div class="grid">
+
+                    <!-- COLUMNA IZQUIERDA -->
+                    <div>
+                        <label>Nombre:</label>
+                        <input type="text" required>
+                    </div>
+
+                    <div>
+                        <label>Correo electrónico:</label>
+                        <input type="email">
+                    </div>
+
+                    <!-- URL (fila completa) -->
+                    <div class="full">
+                        <label>URL:</label>
+                        <input type="url" placeholder="https://">
+                    </div>
+
+                    <!-- Fecha y hora en la misma columna -->
+                    <div>
+                        <label>Fecha:</label>
+                        <input type="date" required>
+
+                        <label style="margin-top:15px;">Hora:</label>
+                        <input type="time">
+                    </div>
+
+                    <!-- Fecha y hora combinadas -->
+                    <div>
+                        <label>Fecha y hora:</label>
+                        <input type="datetime-local">
+
+                        <label style="margin-top:15px;">Mes:</label>
+                        <input type="month">
+                    </div>
+
+                    <div>
+                        <label>Teléfono:</label>
+                        <input type="tel" required>
+                    </div>
+
+                    <!-- Campo Buscar por (fila completa) -->
+                    <div class="full">
+                        <label>Buscar por:</label>
+                        <input type="search" required>
+                    </div>
+
+                    <div>
+                        <label>Color favorito:</label>
+                        <input type="color" style="padding:0; height:42px;">
+                    </div>
+
+                </div>
+
+                <div style="text-align:center;">
+                    <button type="submit">Enviar</button>
+                </div>
+
+            </form>
+        </div>
+
+    </body>
+</html>
