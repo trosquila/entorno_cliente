@@ -1,0 +1,48 @@
+/* Estilos útiles para validación */
+input:invalid {
+border: 2px solid red;
+}
+input:valid {
+border: 2px solid green;
+}
+
+#errores {
+color: red;
+margin-top: 10px;
+}
+.txtVerde{
+    color: greenyellow;
+}
+#tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+#tabla th, 
+#tabla td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+#tabla th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  color: #222;
+}
+
+#tabla tr:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#tabla caption {
+  caption-side: top;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #444;
+}

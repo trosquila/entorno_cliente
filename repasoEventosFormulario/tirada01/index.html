@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Plantilla Base JS</title>
+        <link rel="stylesheet" href="css/style.css">
+            <script src="js/script.js"></script>
+    </head>
+
+    <body>
+        <h1 id="titulo">Plantilla Base</h1>
+
+        <!-- Contenedor para mensajes -->
+        <div id="errores"></div>
+
+        <!-- FORMULARIO BASE -->
+        <form id="miFormulario" novalidate>
+            <label>Nombre:
+                <input type="text" id="nombre" required>
+            </label><br><br>
+
+            <label>Teléfono:
+                <input type="text" id="telefono" pattern="[0-9]{3} [0-9]{3} [0-9]{3}">
+            </label><br><br>
+
+            <label>Email:
+                <input type="email" id="email">
+            </label><br><br>
+
+            <label>Tipo de vehículo:
+                <select id="vehiculo" required>
+                    <option value="">--Selecciona--</option>
+                    <option value="coche">Coche</option>
+                    <option value="moto">Moto</option>
+                </select>
+            </label><br><br>
+
+            <label>Extras:
+                <input type="checkbox" id="ext1"> Extra 1
+                <input type="checkbox" id="ext2"> Extra 2
+            </label><br><br>
+
+            <label>Fecha:
+                <input type="text" id="fecha" pattern="\\d{2}/\\d{2}/\\d{4}" required>
+            </label><br><br>
+            <button type="submit" id="btnEnviar">Enviar</button>
+        </form>
+        <button id="addFila">Añadir fila</button>
+        <table id="tabla"></table>
+    </body>
+</html>
