@@ -14,6 +14,21 @@ document.addEventListener("DOMContentLoaded", function name(params) {
         this.removeEventListener('click', cambiarColor());
     });
     elementosDinamicos();
+    formulario.addEventListener('submit', function regulares() {
+        regulares.preventDefault();
+
+        let inputNombre   = document.getElementById("nombre");
+        let inputTelefono = document.getElementById("telefono");
+        let inputEmail    = document.getElementById("email");
+        let selectVehiculo = document.getElementById("vehiculo");
+        let checkExt1     = document.getElementById("ext1");
+        let checkExt2     = document.getElementById("ext2");
+        let inputFecha    = document.getElementById("fecha")
+        if(!inputNombre.validity.valueMissing ){
+            console.log("required")
+        }
+        
+    })
 })
 
 function elementosDinamicos(){
