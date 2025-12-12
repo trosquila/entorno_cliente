@@ -1,0 +1,89 @@
+{
+  "tiposEquipo": [
+    {
+      "id": "1",
+      "tipo": "portátil"
+    },
+    {
+      "id": "2",
+      "tipo": "tablet"
+    },
+    {
+      "id": "3",
+      "tipo": "sobremesa"
+    }
+  ],
+  "reservas": [
+    {
+      "id": "1",
+      "nombre": "Sonia",
+      "numExpediente": "DAW-1234",
+      "correoE": "sonia@educa.calasanz.es",
+      "tipoEquipo": "portatil",
+      "fecha": "03/12/2025",
+      "hora": "11:00",
+      "duracion": 3,
+      "observaciones": ""
+    },
+    {
+      "id": "752c",
+      "numExpediente": "2345",
+      "correoE": "2345",
+      "tipoEquipo": "1",
+      "fecha": "2345",
+      "hora": "03:24",
+      "duracion": "3",
+      "observaciones": "2345"
+    },
+    {
+      "id": "0486",
+      "numExpediente": "er",
+      "correoE": "wert",
+      "tipoEquipo": "",
+      "fecha": "wert",
+      "hora": "",
+      "duracion": "",
+      "observaciones": ""
+    },
+    {
+      "id": "91a3",
+      "numExpediente": "er",
+      "correoE": "wert",
+      "tipoEquipo": "",
+      "fecha": "wert",
+      "hora": "",
+      "duracion": "2",
+      "observaciones": ""
+    },
+    {
+      "id": "7822",
+      "numExpediente": "",
+      "correoE": "",
+      "tipoEquipo": "",
+      "fecha": "",
+      "hora": "",
+      "duracion": "",
+      "observaciones": ""
+    },
+    {
+      "id": "4a2c",
+      "numExpediente": "sdf",
+      "correoE": "sdf",
+      "tipoEquipo": "",
+      "fecha": "",
+      "hora": "",
+      "duracion": "",
+      "observaciones": ""
+    },
+    {
+      "id": "3e3b",
+      "numExpediente": "sdf",
+      "correoE": "sdf",
+      "tipoEquipo": "",
+      "fecha": "",
+      "hora": "",
+      "duracion": "4",
+      "observaciones": "sad"
+    }
+  ]
+}
