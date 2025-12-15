@@ -49,8 +49,38 @@ footer{
     height: 100px;
 }
 .contenido{
-    width: 80%;
-    margin: auto;
+    max-width: 80%;
+    min-height: 400px;
+    margin:  10% auto auto auto;
     background-color: var(--principal-2);
     border-radius: 10px;
+}
+.contenedorDatos{
+    padding: 20px;
+    display: grid;
+    justify-content: center;
+}
+.contenedorSelect{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.labelSelect{
+    color: white;
+    font-weight: bold;
+}
+select{
+    width: 276px;
+    height: 30px;
+    border-radius: 6px;
+}
+table{
+    border: 2px solid white;
+    border-collapse: collapse;
+    color: white;
+    margin-top: 40px;
+}
+th, td{
+    border: 1px solid white;
+    padding: 8px 14px;
 }
