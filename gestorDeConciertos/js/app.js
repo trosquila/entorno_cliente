@@ -84,18 +84,17 @@ function crearTabla(){
 }
 
 async function actualizarTabla() {
-    console.log(this.value);
     
     const conciertos = await datosParaTabla(this.value);
+    const conciertosOrdenados = ordenarConciertosTablaPrincipal(conciertos);
     limpiarTabla();
-    console.log(conciertos);
     
     const tabla = document.getElementById('tablaArtista');
-    const tr = document.createElement('tr');
-    tabla.appendChild(tr);
-    conciertos.forEach(element => {
+    conciertosOrdenados.forEach(element => {
+        const tr = document.createElement('tr');
+        tabla.appendChild(tr);
         const td1 = document.createElement('td');
-        td.textContent = element.titulo;
+        td1.textContent = element.título;
         tr.appendChild(td1);
 
         const td2 = document.createElement('td');
@@ -110,20 +109,38 @@ async function actualizarTabla() {
 
 async function datosParaTabla(id){
     const conciertos = await obtenerConciertos();
-    const filtrarConciertos = conciertos.find(element => element.artistaId == id);
-    console.log(concierto);
+    const filtrarConciertos = [];
+    console.log(conciertos);
+    conciertos.forEach(element => {
+        element.artistaId == id? filtrarConciertos.push(element):'';
+    });
+    console.log(filtrarConciertos);
     
-    return concierto;
+    return filtrarConciertos;
 }
 
 function limpiarTabla() {
-    const tabla = Array.from(document.getElementById('tablaArtista'));
+    const tabla = document.getElementById('tablaArtista');
+    console.log(tabla);
     
-    tabla.forEach(element => {
-        if(element.id != 'cabeceraTabla'){
-            element.remove;
+    const filas = tabla.querySelectorAll('tr');
+    filas.forEach(fila => {
+        if(fila.id != 'cabeceraTabla'){
+            fila.remove();
         }
     });
+
+}
+
+function ordenarConciertosTablaPrincipal(conciertos){
+    let fechaActual = new Date();
+    fechaActual = fechaActual.toISOString();
+    let fecha = fechaActual.substring(0, 10);
+    //slice
+
+    conciertos.map()
+    conciertos.sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
+    return conciertos
 }
 
 async function obtenerArtistas() {
