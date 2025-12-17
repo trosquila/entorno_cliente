@@ -84,7 +84,7 @@ function crearTabla(){
 }
 
 async function actualizarTabla() {
-    
+    borrarTablaSecundaria()
     const conciertos = await datosParaTabla(this.value);
     const conciertosOrdenados = ordenarConciertosTablaPrincipal(conciertos);
     limpiarTabla();
@@ -96,6 +96,8 @@ async function actualizarTabla() {
         const td1 = document.createElement('td');
         td1.textContent = element.título;
         tr.appendChild(td1);
+        tr.id = element.artistaId;
+        tr.addEventListener('click', gestionTablaSecundaria);
 
         const td2 = document.createElement('td');
         td2.textContent = element.lugar;
@@ -121,7 +123,6 @@ async function datosParaTabla(id){
 
 function limpiarTabla() {
     const tabla = document.getElementById('tablaArtista');
-    console.log(tabla);
     
     const filas = tabla.querySelectorAll('tr');
     filas.forEach(fila => {
@@ -136,11 +137,83 @@ function ordenarConciertosTablaPrincipal(conciertos){
     let fechaActual = new Date();
     fechaActual = fechaActual.toISOString();
     let fecha = fechaActual.substring(0, 10);
+    let conciertosFuturos = [];
+    conciertos.forEach(element => {
+        if(element.fecha > fecha){
+            conciertosFuturos.push(element);
+        }
+    });
     //slice
+    conciertosFuturos.sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
+    return conciertosFuturos
+}
 
-    conciertos.map()
-    conciertos.sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
-    return conciertos
+async function gestionTablaSecundaria(){
+
+    borrarTablaSecundaria();
+    const conciertos = await obtenerConciertos();
+    crearTablaSecundaria(conciertos, this.id);
+
+}
+
+function crearTablaSecundaria(conciertos, idArtista){
+    const conciertosFiltrados = filtrarYordenarConciertosSecundario(conciertos, idArtista);
+    const contenedorDatos = document.getElementById('contenedorDatos');
+    const contenidoCabeceras = ['Concierto','Lugar','Fecha'];
+
+    const tabla = document.createElement('table');
+    tabla.id = 'tablaSecundaria';
+    contenedorDatos.appendChild(tabla);
+
+    const cabecera = document.createElement('tr');
+
+    tabla.appendChild(cabecera);
+    contenidoCabeceras.forEach(element => {
+        const th = document.createElement('th');
+        th.textContent = element;
+        cabecera.appendChild(th);
+        
+    });
+    conciertosFiltrados.forEach(element => {
+        const tr = document.createElement('tr');
+        tabla.appendChild(tr);
+        const td1 = document.createElement('td');
+        td1.textContent = element.título;
+        tr.appendChild(td1);
+        tr.id = element.artistaId;
+
+        const td2 = document.createElement('td');
+        td2.textContent = element.lugar;
+        tr.appendChild(td2);
+
+        const td3 = document.createElement('td');
+        td3.textContent = element.fecha;
+        tr.appendChild(td3);
+    });
+}
+
+function filtrarYordenarConciertosSecundario(conciertos, idArtista) {
+    let fechaActual = new Date();
+    fechaActual = fechaActual.toISOString();
+    let fecha = fechaActual.substring(0, 10);
+    let conciertosPasados= [];
+    console.log(conciertos);
+    
+    conciertos.forEach(element => {
+        if(element.fecha < fecha && element.artistaId == idArtista){
+            conciertosPasados.push(element);
+        }
+    });
+    conciertosPasados.sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
+    
+    return conciertosPasados
+}
+
+function borrarTablaSecundaria(){
+    const tabla = document.getElementById('tablaSecundaria');
+    if(tabla != null){
+        tabla.remove();
+    }
 }
 
 async function obtenerArtistas() {
