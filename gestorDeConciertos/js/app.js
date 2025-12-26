@@ -9,7 +9,10 @@ document.addEventListener('DOMContentLoaded', function inicioPrograma(){
     verInfo.addEventListener('click', gestorVerInfo);
 });
 
-async function gestorArtistas() {
+/*
+VER INFO
+*/
+async function gestorVerInfo() {
     verificarContenedorLimpio();
 
     const contenedorContenido = document.getElementById('contenido');
@@ -53,7 +56,7 @@ async function gestorArtistas() {
     crearTabla();
 }
 
-async function gestorVerInfo() {
+async function gestorArtistas() {
 
 }
 
@@ -149,10 +152,16 @@ function ordenarConciertosTablaPrincipal(conciertos){
 }
 
 async function gestionTablaSecundaria(){
+    const tablaSecundaria = document.getElementById('tablaSecundaria');
+    console.log(tablaSecundaria);
+    
 
-    borrarTablaSecundaria();
-    const conciertos = await obtenerConciertos();
-    crearTablaSecundaria(conciertos, this.id);
+    if(tablaSecundaria === null){
+        const conciertos = await obtenerConciertos();
+        crearTablaSecundaria(conciertos, this.id);
+    }else{
+        borrarTablaSecundaria();
+    }
 
 }
 
@@ -215,7 +224,17 @@ function borrarTablaSecundaria(){
         tabla.remove();
     }
 }
+/*
+ARTISTAS
+*/
 
+
+
+
+
+/*
+CONSULTAS
+*/
 async function obtenerArtistas() {
     try {
         const response = await fetch('http://localhost:3000/artistas');
