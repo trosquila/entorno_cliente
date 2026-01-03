@@ -268,17 +268,14 @@ async function generarFormularioArtistas(){
 
 function ajustarFormularioArtistas(){
     const selectOpciones = document.getElementById('selectAccion');
-    console.log(selectOpciones.value);
-    
+
     ajustarFormArtistas();
+    borrarErroresFormulario();
+
     if(selectOpciones.value == 0 || selectOpciones.value == null){
         darAltaArtista();
-        console.log('alta');
-        
     }else{
         darBajaArtista();
-        console.log('baja');
-        
     }
 }
 
@@ -402,13 +399,13 @@ function ajustarFormArtistas(){
 
 function recogerDatosFormularioArtistas(){
     const validarForm = validarFormInsertarArtista();
-    if(validarForm === true){
+    if(validarForm.length == 0){
         let datosForm = {
         nombre: '',
         generoMusicalId: '',
         pais: '',
         anioInicio: ''
-    };
+    }
 
     datosForm.nombre = document.getElementById('nombreArtista').value;
     datosForm.generoMusicalId = document.getElementById('selectGenero').value;
@@ -416,6 +413,8 @@ function recogerDatosFormularioArtistas(){
     datosForm.anioInicio = document.getElementById('yearInicio').value;
 
     return datosForm;
+    }else{
+        imprimirErrores(validarForm);
     }
 
     return validarForm;
@@ -430,68 +429,89 @@ function validarFormInsertarArtista() {
     const anioInicio = document.getElementById('yearInicio');
 
     if(nombre.validity.tooLong){
-        validar = false;
+        
         console.log('longiturd '+nombre.validationMessage);
         errores.push(
             {
-                element: 'Nombre',
+                nombre: 'Nombre',
                 error: nombre.validationMessage
             }
         );
     }
     if(nombre.validity.valueMissing){
-        validar = false;
         errores.push(
             {
-                element: 'Nombre',
+                nombre: 'Nombre',
                 error: nombre.validationMessage
             }
         );
-        
     }
 
     if(generoMusicalId.validationMessage){
-        validar = false;
         errores.push(
             {
-                element: 'Genero Musical',
-                error: nombre.validationMessage
+                nombre: 'Genero Musical',
+                error: generoMusicalId.validationMessage
             }
         );
-        
     }
 
     if(pais.validity.valueMissing){
-        validar = false;
         errores.push(
             {
-                element: 'País',
-                error: nombre.validationMessage
+                nombre: 'País',
+                error: pais.validationMessage
             }
         );
-        
     }
 
     if(anioInicio.validity.valueMissing){
-        validar = false;
         errores.push(
             {
-                element: 'Año de inicio',
-                error: nombre.validationMessage
+                nombre: 'Año de inicio',
+                error: anioInicio.validationMessage
             }
         );
     }
 
     if(anioInicio.validity.rangeOverflow){
-        validar = false;
         errores.push(
             {
-                element: 'Año de inicio',
-                error: nombre.validationMessage
+                nombre: 'Año de inicio',
+                error: anioInicio.validationMessage
             }
         );
     }
     return errores;
+}
+
+function imprimirErrores(errores){
+    console.log(errores);
+    
+    const contenedor = document.getElementById('contenedorDatos');
+    const contenedorErrores = document.createElement('div');
+
+    contenedorErrores.classList.add('conenedorErrores');
+    contenedorErrores.id = 'contenedorErrores';
+    contenedor.appendChild(contenedorErrores);
+
+    errores.forEach(element => {
+        const p = document.createElement('p');
+        const span = document.createElement('span');
+
+        span.textContent = element.nombre+': ';
+        p.appendChild(span);
+
+        p.appendChild(document.createTextNode(element.error));
+        contenedorErrores.appendChild(p);
+    });
+}
+
+function borrarErroresFormulario(){
+    const contenedorErrores = document.getElementById('contenedorErrores');
+    if(contenedorErrores != null){
+        contenedorErrores.remove();
+    }
 }
 /*
 CONSULTAS
@@ -543,6 +563,7 @@ async function obtenerNacionalidades(){
 
 
 async function guardarAltaArtista() {
+    borrarErroresFormulario();
     const datosForm = recogerDatosFormularioArtistas();
 }
 
