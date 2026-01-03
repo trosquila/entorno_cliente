@@ -417,7 +417,7 @@ function recogerDatosFormularioArtistas(){
         imprimirErrores(validarForm);
     }
 
-    return validarForm;
+    return false;
     
 }
 
@@ -565,6 +565,18 @@ async function obtenerNacionalidades(){
 async function guardarAltaArtista() {
     borrarErroresFormulario();
     const datosForm = recogerDatosFormularioArtistas();
+    datosForm.anioInicio = datosForm.anioInicio.split('-')[0];
+    console.log(datosForm);
+    if(datosForm != false){
+        try {
+            const response = await fetch('http://localhost:3000/artistas', {
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datosForm) });
+        }catch (error) {
+            console.error("Error al insertar artista:", error); 
+            return null; }
+    }
 }
 
 async function eliminarArtista() {
