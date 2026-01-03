@@ -234,6 +234,7 @@ async function generarFormularioArtistas(){
     const opcionesSelect = [
         {id: 0, accion: 'Dar alta'},
         {id:1, accion: 'Dar baja'},
+        {id:2, accion: 'Modificar'},
     ];
 
     
@@ -283,6 +284,8 @@ function ajustarFormularioArtistas(){
 
 async function darBajaArtista() {
     const formulario = document.getElementById('formArtistas');
+    formulario.noValidate = true;
+
     const artistas = await obtenerArtistas();
     
     const labelNombre = document.createElement('label');
@@ -299,6 +302,9 @@ async function darBajaArtista() {
         option.textContent = element.nombre;
         selectArtistas.appendChild(option);
     });
+
+
+
     formulario.appendChild(selectArtistas);
 
     const btnForm = document.createElement('input');
@@ -324,6 +330,8 @@ async function darAltaArtista(){
     inputNombre.type = 'text';
     inputNombre.name = 'nombreArtista';
     inputNombre.id = 'nombreArtista';
+    inputNombre.required = true;
+    inputNombre.maxLength = 55;
     formulario.appendChild(inputNombre);
 
     const labelGeneroMusical = document.createElement('label');
@@ -332,6 +340,7 @@ async function darAltaArtista(){
 
     const selectGenero = document.createElement('select');
     selectGenero.id = 'selectGenero';
+    selectGenero.required = true;
     formulario.appendChild(selectGenero);
 
     generosMusicales.forEach(element => {
@@ -347,6 +356,7 @@ async function darAltaArtista(){
 
     const selectNacionalidad = document.createElement('select');
     selectNacionalidad.id = 'selectNacionalidad';
+    selectNacionalidad.required = true;
     formulario.appendChild(selectNacionalidad);
 
     nacionalidades.forEach(pais => {
@@ -364,6 +374,9 @@ async function darAltaArtista(){
     const inputYearInicio = document.createElement('input');
     inputYearInicio.id = 'yearInicio';
     inputYearInicio.type = 'date';
+    inputYearInicio.required = true;
+    inputYearInicio.max = new Date().toISOString().split("T")[0];
+    
     formulario.appendChild(inputYearInicio);
 
     const btnForm = document.createElement('input');
@@ -410,10 +423,75 @@ function recogerDatosFormularioArtistas(){
 }
 
 function validarFormInsertarArtista() {
-    const nombre = document.getElementById('nombreArtista').value;
-    const generoMusicalId = document.getElementById('selectGenero').value;
-    const pais = document.getElementById('selectNacionalidad').value;
-    const anioInicio = document.getElementById('yearInicio').value;
+    let errores = [];
+    const nombre = document.getElementById('nombreArtista');
+    const generoMusicalId = document.getElementById('selectGenero');
+    const pais = document.getElementById('selectNacionalidad');
+    const anioInicio = document.getElementById('yearInicio');
+
+    if(nombre.validity.tooLong){
+        validar = false;
+        console.log('longiturd '+nombre.validationMessage);
+        errores.push(
+            {
+                element: 'Nombre',
+                error: nombre.validationMessage
+            }
+        );
+    }
+    if(nombre.validity.valueMissing){
+        validar = false;
+        errores.push(
+            {
+                element: 'Nombre',
+                error: nombre.validationMessage
+            }
+        );
+        
+    }
+
+    if(generoMusicalId.validationMessage){
+        validar = false;
+        errores.push(
+            {
+                element: 'Genero Musical',
+                error: nombre.validationMessage
+            }
+        );
+        
+    }
+
+    if(pais.validity.valueMissing){
+        validar = false;
+        errores.push(
+            {
+                element: 'País',
+                error: nombre.validationMessage
+            }
+        );
+        
+    }
+
+    if(anioInicio.validity.valueMissing){
+        validar = false;
+        errores.push(
+            {
+                element: 'Año de inicio',
+                error: nombre.validationMessage
+            }
+        );
+    }
+
+    if(anioInicio.validity.rangeOverflow){
+        validar = false;
+        errores.push(
+            {
+                element: 'Año de inicio',
+                error: nombre.validationMessage
+            }
+        );
+    }
+    return errores;
 }
 /*
 CONSULTAS
