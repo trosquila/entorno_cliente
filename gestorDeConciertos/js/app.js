@@ -116,11 +116,10 @@ async function actualizarTabla() {
 async function datosParaTabla(id){
     const conciertos = await obtenerConciertos();
     const filtrarConciertos = [];
-    console.log(conciertos);
+
     conciertos.forEach(element => {
         element.artistaId == id? filtrarConciertos.push(element):'';
     });
-    console.log(filtrarConciertos);
     
     return filtrarConciertos;
 }
@@ -154,8 +153,6 @@ function ordenarConciertosTablaPrincipal(conciertos){
 
 async function gestionTablaSecundaria(){
     const tablaSecundaria = document.getElementById('tablaSecundaria');
-    console.log(tablaSecundaria);
-    
 
     if(tablaSecundaria === null){
         const conciertos = await obtenerConciertos();
@@ -206,7 +203,6 @@ function filtrarYordenarConciertosSecundario(conciertos, idArtista) {
     fechaActual = fechaActual.toISOString();
     let fecha = fechaActual.substring(0, 10);
     let conciertosPasados= [];
-    console.log(conciertos);
     
     conciertos.forEach(element => {
         if(element.fecha < fecha && element.artistaId == idArtista){
@@ -236,8 +232,8 @@ function gestorArtistas() {
 
 async function generarFormularioArtistas(){
     const opcionesSelect = [
-        {id: 0, accion: 'Dar baja'},
-        {id:1, accion: 'Dar alta'},
+        {id: 0, accion: 'Dar alta'},
+        {id:1, accion: 'Dar baja'},
     ];
 
     const generosMusicales = await obtenerGenerosMusicales();
@@ -248,6 +244,7 @@ async function generarFormularioArtistas(){
     
     const formulario = document.createElement('form');
     formulario.classList.add('formularioArtistas');
+    formulario.id = 'formArtistas';
     contenedorDatos.appendChild(formulario);
 
     const labelOpcionesForm = document.createElement('label');
@@ -268,6 +265,7 @@ async function generarFormularioArtistas(){
 
     const labelNombre = document.createElement('label');
     labelNombre.textContent = 'Nombre del artista: ';
+    labelNombre.id = 'labelNombre';
     formulario.appendChild(labelNombre);
 
     const inputNombre = document.createElement('input');
@@ -300,7 +298,6 @@ async function generarFormularioArtistas(){
     formulario.appendChild(selectNacionalidad);
 
     nacionalidades.forEach(pais => {
-        console.log(pais);
         
             let option = document.createElement('option');
             option.value = pais.country;
@@ -310,7 +307,40 @@ async function generarFormularioArtistas(){
 }
 
 function ajustarFormularioArtistas(){
-    
+    const selectOpciones = document.getElementById('selectAccion');
+    borrarElementoNombreArtista();
+    crearElementoArtista(selectOpciones.value);
+}
+
+async function crearElementoArtista(id){
+    const labelNombre = document.getElementById('labelNombre');
+    if(id == 0){
+        const inputNombre = document.createElement('input');
+        inputNombre.type = 'text';
+        inputNombre.name = 'nombreArtista';
+        inputNombre.id = 'nombreArtista';
+        labelNombre.parentNode.insertBefore(inputNombre, labelNombre.nextSibling);
+    }else{
+        const artistas = await obtenerArtistas();
+        console.log(artistas);
+        
+        const selectArtistas = document.createElement('select');
+        selectArtistas.name = 'nombreArtista';
+        selectArtistas.id = 'nombreArtista';
+        artistas.forEach(element => {
+            let option = document.createElement('option');
+            option.value = element.id;
+            option.textContent = element.nombre;
+            selectArtistas.appendChild(option);
+        });
+        labelNombre.parentNode.insertBefore(selectArtistas, labelNombre.nextSibling);
+        
+    }
+}
+
+function borrarElementoNombreArtista(){
+    const elementoArtista = document.getElementById('nombreArtista');
+    elementoArtista.remove();
 }
 /*
 CONSULTAS
@@ -352,7 +382,6 @@ async function obtenerNacionalidades(){
         try {
         const response = await fetch('https://countriesnow.space/api/v0.1/countries');
         const data = await response.json();
-        console.log(data);
         
         return data.data;
     } catch (error) {
