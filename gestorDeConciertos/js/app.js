@@ -236,9 +236,6 @@ async function generarFormularioArtistas(){
         {id:1, accion: 'Dar baja'},
     ];
 
-    const generosMusicales = await obtenerGenerosMusicales();
-
-    const nacionalidades = await obtenerNacionalidades();
     
     const contenedorDatos = document.getElementById('contenedorDatos');
     
@@ -262,7 +259,62 @@ async function generarFormularioArtistas(){
         selectAccion.appendChild(option);
     });
     formulario.appendChild(selectAccion);
+    //fuerza primera entrada para crear formulario
+    ajustarFormularioArtistas();
 
+
+}
+
+function ajustarFormularioArtistas(){
+    const selectOpciones = document.getElementById('selectAccion');
+    console.log(selectOpciones.value);
+    
+    ajustarFormArtistas();
+    if(selectOpciones.value == 0 || selectOpciones.value == null){
+        darAltaArtista();
+        console.log('alta');
+        
+    }else{
+        darBajaArtista();
+        console.log('baja');
+        
+    }
+}
+
+async function darBajaArtista() {
+    const formulario = document.getElementById('formArtistas');
+    const artistas = await obtenerArtistas();
+    
+    const labelNombre = document.createElement('label');
+    labelNombre.textContent = 'Nombre del artista: ';
+    labelNombre.id = 'labelNombre';
+    formulario.appendChild(labelNombre);
+        
+    const selectArtistas = document.createElement('select');
+    selectArtistas.name = 'nombreArtista';
+    selectArtistas.id = 'nombreArtista';
+    artistas.forEach(element => {
+        let option = document.createElement('option');
+        option.value = element.id;
+        option.textContent = element.nombre;
+        selectArtistas.appendChild(option);
+    });
+    formulario.appendChild(selectArtistas);
+
+    const btnForm = document.createElement('input');
+    btnForm.type = 'button';
+    btnForm.value = 'Dar de baja';
+    btnForm.classList.add('btnFormArtistas')
+    btnForm.addEventListener('click', eliminarArtista);
+    formulario.appendChild(btnForm);
+}
+
+async function darAltaArtista(){
+    const formulario = document.getElementById('formArtistas');
+
+    const generosMusicales = await obtenerGenerosMusicales();
+    const nacionalidades = await obtenerNacionalidades();
+    
     const labelNombre = document.createElement('label');
     labelNombre.textContent = 'Nombre del artista: ';
     labelNombre.id = 'labelNombre';
@@ -304,43 +356,64 @@ async function generarFormularioArtistas(){
             option.textContent = pais.country;
             selectNacionalidad.appendChild(option);
     });
+    
+    const labelYearInicio = document.createElement('label');
+    labelYearInicio.textContent = 'Año de inicio:';
+    formulario.appendChild(labelYearInicio);
+
+    const inputYearInicio = document.createElement('input');
+    inputYearInicio.id = 'yearInicio';
+    inputYearInicio.type = 'date';
+    formulario.appendChild(inputYearInicio);
+
+    const btnForm = document.createElement('input');
+    btnForm.type = 'button';
+    btnForm.value = 'Dar de alta';
+    btnForm.classList.add('btnFormArtistas');
+    btnForm.addEventListener('click', guardarAltaArtista);
+    formulario.appendChild(btnForm);
 }
 
-function ajustarFormularioArtistas(){
-    const selectOpciones = document.getElementById('selectAccion');
-    borrarElementoNombreArtista();
-    crearElementoArtista(selectOpciones.value);
+function ajustarFormArtistas(){
+    const formulario = document.getElementById('formArtistas');
+    const contenidoForm = formulario.querySelectorAll('label, input, select');
+    let contador = 0;
+    contenidoForm.forEach(element => {
+        if(contador > 1){
+            element.remove();
+        }else{
+            contador++;
+        }
+    });
 }
 
-async function crearElementoArtista(id){
-    const labelNombre = document.getElementById('labelNombre');
-    if(id == 0){
-        const inputNombre = document.createElement('input');
-        inputNombre.type = 'text';
-        inputNombre.name = 'nombreArtista';
-        inputNombre.id = 'nombreArtista';
-        labelNombre.parentNode.insertBefore(inputNombre, labelNombre.nextSibling);
-    }else{
-        const artistas = await obtenerArtistas();
-        console.log(artistas);
-        
-        const selectArtistas = document.createElement('select');
-        selectArtistas.name = 'nombreArtista';
-        selectArtistas.id = 'nombreArtista';
-        artistas.forEach(element => {
-            let option = document.createElement('option');
-            option.value = element.id;
-            option.textContent = element.nombre;
-            selectArtistas.appendChild(option);
-        });
-        labelNombre.parentNode.insertBefore(selectArtistas, labelNombre.nextSibling);
-        
+function recogerDatosFormularioArtistas(){
+    const validarForm = validarFormInsertarArtista();
+    if(validarForm === true){
+        let datosForm = {
+        nombre: '',
+        generoMusicalId: '',
+        pais: '',
+        anioInicio: ''
+    };
+
+    datosForm.nombre = document.getElementById('nombreArtista').value;
+    datosForm.generoMusicalId = document.getElementById('selectGenero').value;
+    datosForm.pais = document.getElementById('selectNacionalidad').value; 
+    datosForm.anioInicio = document.getElementById('yearInicio').value;
+
+    return datosForm;
     }
+
+    return validarForm;
+    
 }
 
-function borrarElementoNombreArtista(){
-    const elementoArtista = document.getElementById('nombreArtista');
-    elementoArtista.remove();
+function validarFormInsertarArtista() {
+    const nombre = document.getElementById('nombreArtista').value;
+    const generoMusicalId = document.getElementById('selectGenero').value;
+    const pais = document.getElementById('selectNacionalidad').value;
+    const anioInicio = document.getElementById('yearInicio').value;
 }
 /*
 CONSULTAS
@@ -391,3 +464,10 @@ async function obtenerNacionalidades(){
 }
 
 
+async function guardarAltaArtista() {
+    const datosForm = recogerDatosFormularioArtistas();
+}
+
+async function eliminarArtista() {
+    
+}
