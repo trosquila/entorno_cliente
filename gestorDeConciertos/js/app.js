@@ -65,10 +65,10 @@ async function gestorVerInfo() {
         select.appendChild(option);
     });
 
-    crearTabla();
+    crearTablaInfo();
 }
 
-function crearTabla(){
+function crearTablaInfo(){
     const contenidoCabeceras = ['Concierto','Lugar','Fecha'];
     const contenedorDatos = document.getElementById('contenedorDatos');
 
@@ -156,13 +156,13 @@ async function gestionTablaSecundaria(){
 
     if(tablaSecundaria === null){
         const conciertos = await obtenerConciertos();
-        crearTablaSecundaria(conciertos, this.id);
+        crearTablaSecundariaInfo(conciertos, this.id);
     }else{
         borrarTablaSecundaria();
     }
 }
 
-function crearTablaSecundaria(conciertos, idArtista){
+function crearTablaSecundariaInfo(conciertos, idArtista){
     const conciertosFiltrados = filtrarYordenarConciertosSecundario(conciertos, idArtista);
     const contenedorDatos = document.getElementById('contenedorDatos');
     const contenidoCabeceras = ['Concierto','Lugar','Fecha'];
@@ -228,6 +228,7 @@ function gestorArtistas() {
     verificarContenedorLimpio();
     generalContenedorDatos();
     generarFormularioArtistas();
+    generarTablaArtistas();
 }
 
 async function generarFormularioArtistas(){
@@ -513,6 +514,69 @@ function borrarErroresFormulario(){
         contenedorErrores.remove();
     }
 }
+
+function generarTablaArtistas(){
+    const contenidoCabeceras = ['Nombre','Genero Musical','Pais', 'Año inicio'];
+    const contenedorDatos = document.getElementById('contenedorDatos');
+    
+    const tabla = document.createElement('table');
+    tabla.id = 'tablaArtista';
+    contenedorDatos.appendChild(tabla);
+
+    const cabecera = document.createElement('tr');
+    cabecera.id = 'cabeceraTabla';
+    tabla.appendChild(cabecera);
+    contenidoCabeceras.forEach(element => {
+        const th = document.createElement('th');
+        th.textContent = element;
+        cabecera.appendChild(th);
+        
+    });
+    rellenarTablaArtistas();
+
+}
+
+async function rellenarTablaArtistas() {
+    const contenidoTabla = await obtenerContenidoTablaArtistas();
+    limpiarTabla();
+    
+    const tabla = document.getElementById('tablaArtista');
+    contenidoTabla.forEach(element => {
+        const tr = document.createElement('tr');
+        tabla.appendChild(tr);
+        const td1 = document.createElement('td');
+        td1.textContent = element.nombre;
+        tr.appendChild(td1);
+
+        const td2 = document.createElement('td');
+        td2.textContent = element.generoMusicalId;
+        tr.appendChild(td2);
+
+        const td3 = document.createElement('td');
+        td3.textContent = element.pais;
+        tr.appendChild(td3);
+
+        const td4 = document.createElement('td');
+        td4.textContent = element.anioInicio;
+        tr.appendChild(td4);
+    });
+}
+
+async function obtenerContenidoTablaArtistas() {
+    const artistas = await obtenerArtistas();
+    const generosMusicales = await obtenerGenerosMusicales();
+    
+    let artistasFormatoTabla = artistas.map((artista) =>{
+        generosMusicales.forEach(element => {
+            if(artista.generoMusicalId === element.id){
+                artista.generoMusicalId = element.nombre;
+            }
+        });
+        return artista;
+    });
+    
+    return artistasFormatoTabla;
+}
 /*
 CONSULTAS
 */
@@ -565,14 +629,15 @@ async function obtenerNacionalidades(){
 async function guardarAltaArtista() {
     borrarErroresFormulario();
     const datosForm = recogerDatosFormularioArtistas();
-    datosForm.anioInicio = datosForm.anioInicio.split('-')[0];
-    console.log(datosForm);
+
     if(datosForm != false){
+        datosForm.anioInicio = datosForm.anioInicio.split('-')[0];
         try {
             const response = await fetch('http://localhost:3000/artistas', {
             method: 'POST', 
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosForm) });
+            rellenarTablaArtistas();
         }catch (error) {
             console.error("Error al insertar artista:", error); 
             return null; }
@@ -580,5 +645,14 @@ async function guardarAltaArtista() {
 }
 
 async function eliminarArtista() {
+    const id = document.getElementById('nombreArtista').value;
     
+    try {
+            const response = await fetch(`http://localhost:3000/artistas/${id}`, {
+            method: 'DELETE'});
+            rellenarTablaArtistas();
+        }catch (error) {
+            console.error("Error al eliminar artista:", error); 
+            return null; 
+        }
 }
