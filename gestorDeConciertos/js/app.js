@@ -304,6 +304,8 @@ async function modificarArtista() {
     });
     selectArtistas.addEventListener('change', formularioEditarArtista);
     formulario.appendChild(selectArtistas);
+    //forzamos primera entrada
+    formularioEditarArtista();
 }
 
 async function darBajaArtista() {
@@ -639,6 +641,9 @@ async function formularioEditarArtista(){
         let option = document.createElement('option');
         option.value = element.id;
         option.textContent = element.nombre;
+        if(element.id == artista.generoMusicalId){
+                option.selected = true;
+            }
         selectGenero.appendChild(option);
     });
 
@@ -676,8 +681,8 @@ async function formularioEditarArtista(){
 
     const btnForm = document.createElement('input');
     btnForm.type = 'button';
-    btnForm.value = 'Dar de alta';
-    btnForm.classList.add('Modificar');
+    btnForm.value = 'Modificar';
+    btnForm.classList.add('btn');
     btnForm.addEventListener('click', guardarAltaArtista);
     formulario.appendChild(btnForm);
 }
