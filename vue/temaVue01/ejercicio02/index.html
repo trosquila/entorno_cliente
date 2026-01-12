@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos básicos de Vue</title>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="scripts/main.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input v-if="elemento === 'input'" type="text" name="ejemplo" id="">
+            <span v-else-if="elemento === 'texto'">{texto}</span>
+            <table v-else-if = "elemento === 'tabla'">
+                <tr>
+                    <td>Dato 1</td>
+                    <td>Dato 2</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+    <script>
+        const mountedApp1 = app.mount("#app");
+    </script>
+</body>
+
+</html>
