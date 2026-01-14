@@ -13,17 +13,16 @@
 <body>
     <div id="app">
         <p id="p1">{{nombre}} {{apellidos}}</p>
-        <p id="p2"> {{edad *3}}</p>
+        <p id="p2" :class ="{divAlt: estilos}"> {{edad *3}}</p>
         <p id="p3">{{numRandom}} </p>
         <div id="div1">
-            <img @error="imagen = false" v-bind:src="imagen" alt="">
-            <p @error="imageError = true">{{textoImagen}}</p>
+            <img v-bind:src="imagen" :alt="textoImagen">
         </div>
         <div id="div2">
-            
+            <input type="text" v-model="nombre" name="nombre">
         </div>
-        <div id="div3">
-    
+        <div id="div3" >
+            <a v-for ="(enlace, index) in enlaces" :key="index" :href="enlace">{{enlace}}</a>
         </div>
     </div>
     <script>
