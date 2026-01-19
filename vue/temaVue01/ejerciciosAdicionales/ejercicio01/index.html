@@ -14,34 +14,38 @@
     <h2>INFORMACIÓN BANCARIA</h2>
     <div id="app">
         <div class="bordeDiv">
-            <p>Nombre:</p>
-            <p>Apellidos:</p>
-            <p>Dirección:</p>
-            <p>Teléfono:</p>
-            <p>Estado civil</p>
+            <p>Nombre: {{cliente.nombre}}</p>
+            <p>Apellidos: {{cliente.apellidos}}</p>
+            <p>Dirección: {{cliente.direccion}}</p>
+            <p>Teléfono:  <span v-if="cliente.telefono != 0 && cliente.telefono != null">{{cliente.telefono}}</span></p>
+            <p>Estado civil: {{cliente.estadoCivil}}</p>
         </div>
-        <div class="bordeDiv">
-            <table>
-                <th>
-                    <td>Id</td>
-                    <td>Producto</td>
-                    <td>Saldo generado</td>
-                </th>
+        <div class="bordeDiv contenedorMitad">
+            <table id="#manejoTabla">
+                <tr>
+                    <th>Id</th>
+                    <th>Producto</th>
+                    <th>Saldo generado</th>
+                    <th>Operaciones</th>
+                </tr>
             </table>
         </div>
-        <div class="bordeDiv">
-            <p>Nombre de la entidad:</p>
-            <p>Dirección de la sucursal:</p>
-            <p>Teléfono de conteacto:</p>
-            <p>Horario de atención al publico</p>
+        <div class="bordeDiv dobleEspacio">
+            <p>Nombre de la entidad: Caja Rural</p>
+            <p>Dirección de la sucursal: calle falsa 123</p>
+            <p>Teléfono de conteacto: 123 3 44 56</p>
+            <p>Horario de atención al publico:</p>
             <ul>
-                
+                <li>Lunes-vierner: 8:00-15:00</li>
+                <li>Sabados: 9:00-13:00</li>
+                <li>Domingos: Cerrado</li>
             </ul>
         </div>
 
     </div>
     <script>
         app.mount("#app");
+        app.mount("#manejoTabla");
     </script>
 </body>
 
