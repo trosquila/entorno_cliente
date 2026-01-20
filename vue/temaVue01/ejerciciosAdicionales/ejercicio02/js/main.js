@@ -25,20 +25,31 @@ const app = Vue.createApp({
             }
             ] 
         });
-        console.log(cliente);
         
+        let lista = cliente.value.productos.slice();
+        console.log(lista);
         
+        const modificarPrecio = ref([]);
+        lista.forEach(element => {
+            modificarPrecio.value.push({id: element.id, 'valor': 0})
+        });
+        let ingresar = (id) =>{
+            let p = id -1;
+            cliente.value.productos[p].saldo +=  modificarPrecio.value[p].valor;
+        }
+        let sacar =(id) =>{
+            let p = id -1;
+            if((cliente.value.productos[p].saldo - modificarPrecio.value[p].valor) < 0){
+                alert('te quedas en negativo socio');
+            }else{
+                cliente.value.productos[p].saldo -=  modificarPrecio.value[p].valor;
+            }
+        }
         return {
-            cliente
+            cliente,
+            ingresar,
+            sacar,
+            modificarPrecio
         };
     },
-});
-
-const manejoTabla = Vue.createApp({
-    setup(){
-        const patata = 1;
-        return{
-            patata
-        };
-    }
 });
