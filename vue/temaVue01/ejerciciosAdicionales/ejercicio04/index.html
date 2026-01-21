@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio04</title>
+    <link href="css/fontello.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <section>
+        <form action="" method="post" id="app">
+            <div class="contenidoForm">
+                <label for="">Nombre</label>
+                <input type="text">
+            </div>
+            <div class="contenidoForm">
+                <label for="">Contraseña</label>
+                <div class="flex">
+                    <input v-if="contra.oculto == false" type="text" name="" id="" v-model="contra.password" @keyPress="actualizarHiddenEnNormal()" @keydown.backspace="borrarHidden()">
+                    <input v-else-if="contra.oculto == true" type="text" name="" id="" v-model="contra.hiddenPassword"  @keyUp="actualizarHidden($event)" @keydown.backspace="borrarNormal()">
+                    <i v-if="contra.oculto == false" class="icon-eye" @click ="ocultarPassword()"></i>
+                    <i v-if="contra.oculto == true" class="icon-eye-off" @click ="ocultarPassword()"></i>
+                </div>
+            </div>
+            <div class="contenidoForm">
+                <p></p>
+            </div>
+        </form>
+    </section>
+    <script>
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

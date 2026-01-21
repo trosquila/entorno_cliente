@@ -1,0 +1,29 @@
+body{
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+section{
+    width: 50%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+form{
+    display: grid;
+    width: 80%;
+    margin-top: 10%;
+    padding: 40px;
+    background-color: rgb(227, 255, 246);
+    justify-content: center;
+}
+.contenidoForm{
+    display: grid;
+    width: 50%;
+
+}
+.contenidoForm input[type="text"]{
+    width: 330px;
+}
+.flex{
+    display: flex;
+}
