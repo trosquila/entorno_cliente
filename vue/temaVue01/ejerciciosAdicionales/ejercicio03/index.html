@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Vue 3</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <div class="grid-imagenes">
+            <section class="contenedorPrincipal" >
+                <div class="contenedorImg">
+                    <div class="tarjetaImg" v-for="(imagen, index) in imagenes" :key="imagen.id" >
+                        <img :src="imagen.url" :alt="imagen.nombre" :class="bordes[index] ? 'bordeAzul' : 'bordeVerde'" @mouseenter="cambioBorde(index)" @click="sumarInteraccion(index)">
+                        <p>{{ imagen.nombre }} -- {{imagen.contador}}</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    
+    <script>
+        app.mount("#app");
+    </script>
+</body>
+</html>
