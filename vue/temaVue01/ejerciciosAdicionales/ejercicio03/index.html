@@ -15,15 +15,29 @@
             <section class="contenedorPrincipal" >
                 <div class="contenedorImg">
                     <div class="tarjetaImg" v-for="(imagen, index) in imagenes" :key="imagen.id" >
-                        <img :src="imagen.url" :alt="imagen.nombre" :class="bordes[index] ? 'bordeAzul' : 'bordeVerde'" @mouseenter="cambioBorde(index)" @click="sumarInteraccion(index)">
+                        <img :src="imagen.url" :alt="imagen.nombre" :class="[bordes[index] ? 'bordeAzul' : 'bordeVerde', imagen.contador > 14? 'discontinuo':'']" @mouseenter="cambioBorde(index)" @click="sumarInteraccion(index)">
                         <p>{{ imagen.nombre }} -- {{imagen.contador}}</p>
                     </div>
                 </div>
             </section>
         </div>
+        <div>
+            <table>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Pulsaciones</th>
+                    <th>nuevo nombre</th>
+                    <th>Nueva URL</th>
+                </tr>
+                <tr v-for="(imagen, index) in imagenes" :key="index">
+                    <td>{{imagen.nombre}}</td>
+                    <td>{{imagen.contador}}</td>
+                    <td><input type="text" name="" id="" v-model="nuevoNombre[index]"  @keyPress.enter="actualizarNombre(index)"></td>
+                    <td><input type="text" name="" id="" v-model="nuevaURL[index]"  @keyPress.enter="actualizarURL(index)"></td>
+                </tr>
+            </table>
+        </div>
     </div>
-
-    
     <script>
         app.mount("#app");
     </script>

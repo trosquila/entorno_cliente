@@ -35,20 +35,39 @@ const app = Vue.createApp({
                                     contador: 0
                                 }
                             ]);
+
         let bordes = ref([false,false,false,false,false,false]);
-        console.log(bordes);
-        
+        let nuevoNombre = ref(['','','','','','']);
+        let nuevaURL = ref(['','','','','','']);
+
         let cambioBorde = (index) =>{
             bordes.value[index] = !bordes.value[index];
         }
+
         let sumarInteraccion =(index) =>{
             imagenes.value[index].contador++; 
         }
+
+        let actualizarNombre = (index) =>{
+            imagenes.value[index].nombre = nuevoNombre.value[index];
+            nuevoNombre.value[index] = '';
+
+        }
+        let actualizarURL = (index) =>{
+            imagenes.value[index].url = nuevaURL.value[index];
+            nuevaURL.value[index] = '';
+            imagenes.value[index].contador = 0;
+        }
+
         return {
             imagenes,
             bordes,
+            nuevoNombre,
+            nuevaURL,
             cambioBorde,
-            sumarInteraccion
+            sumarInteraccion,
+            actualizarNombre,
+            actualizarURL
         };
     },
 });
