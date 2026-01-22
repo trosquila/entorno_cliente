@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio05</title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+        <section id="app">
+            <h2>Tecnica de estudio: Pomodoro</h2>
+            <p>Tiempo: {{contador.tiempoMin}}:{{contador.tiempoSeg}}</p>
+            <p>Estado del contador:</p>
+            <button>Reiniciar</button>
+            <button @click="pararContador()">Parar</button>
+            <button @click="activarContador()">Iniciar</button>
+            <div class="Mensaje">
+
+            </div>
+        </section>
+        <script>
+            app.mount("#app");
+        </script>
+    </body>
+</html>
