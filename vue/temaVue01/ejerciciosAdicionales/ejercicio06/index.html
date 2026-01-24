@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio06</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <section id="app">
+        <h2>Catálogo de libros</h2>
+        <div>
+            <form action="" novalidate>
+                <div>
+                    <label for="">Titulo</label>
+                    <input type="text" name="" id="" v-model="formulario.titulo" required>
+                </div>
+                <div>
+                    <label for="">Autor</label>
+                    <input type="text" name="" id="" v-model="formulario.autor" required>
+                </div>
+                <div>
+                    <label for="">Número de ejemplares</label>
+                    <input type="number" name="" id="" v-model="formulario.numEjemplares" required>
+                </div>
+                <div>
+                    <input type="button" value="Agregar libro" @click="guardarForm()">
+                </div>
+            </form>
+        </div>
+        <div>
+
+        </div>
+        <div>
+            <div v-for="(libros, index) in memoriaDisponible" :key="index">
+                <p>{{libros.titulo}}</p>
+                <p>{{libros.autor}}</p>
+                <p>{{libros.numEjemplares}}</p>
+            </div>
+        </div>
+    </section>
+    <script>
+        app.mount("#app");
+    </script>
+</body>
+</html>

@@ -11,13 +11,13 @@
     <body>
         <section id="app">
             <h2>Tecnica de estudio: Pomodoro</h2>
-            <p>Tiempo: {{contador.tiempoMin}}:{{contador.tiempoSeg}}</p>
+            <p>Tiempo: {{contador.tiempoMin < 10? '0'+contador.tiempoMin: contador.tiempoMin}}:{{contador.tiempoSeg < 10? '0'+contador.tiempoSeg: contador.tiempoSeg}}</p>
             <p>Estado del contador:</p>
-            <button>Reiniciar</button>
+            <button @click="reiniciar()">Reiniciar</button>
             <button @click="pararContador()">Parar</button>
             <button @click="activarContador()">Iniciar</button>
             <div class="Mensaje">
-
+                <p>{{contador.descanso == false? contador.mensaje01: contador.mensaje02}}</p>
             </div>
         </section>
         <script>
