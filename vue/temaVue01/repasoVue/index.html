@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Repaso Vue - Panel completo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <div id="app" class="container">
+
+        <header>
+            <div>
+                <h1>Panel de repaso Vue</h1>
+                <p>Formularios · Directivas · Eventos · Computed · Clases dinámicas · Temporizador</p>
+            </div>
+            <p class="muted">Vue 3 + Composition API</p>
+        </header>
+
+        <div class="grid">
+
+            <!-- IZQUIERDA: FORM + LISTA -->
+            <section class="card">
+                <h2>A) Crear tarea</h2>
+
+                <form>
+                    <div class="row">
+                        <div>
+                            <label>Título *</label>
+                            <input type="text" placeholder="Ej: Repasar v-for" v-model="recogerDatosForm.titulo" />
+                        </div>
+                        <div>
+                            <label>Categoría</label>
+                            <select v-model="recogerDatosForm.categoria">
+                                <option value="Estudio">Estudio</option>
+                                <option value="Salud">Salud</option>
+                                <option value="Casa">Casa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 12px;">
+                        <div>
+                            <label>Minutos estimados *</label>
+                            <input type="number" min="1" v-model="recogerDatosForm.minutosEstimados" />
+                        </div>
+                        <div style="display:flex; gap:10px; align-items:end;">
+                            <div style="flex:1;">
+                                <label>Alta prioridad</label>
+                                <div style="display:flex; gap:10px; align-items:center; height: 42px;">
+                                    <input type="checkbox" v-model="recogerDatosForm.prioridad" />
+                                    <span class="muted">Marcar si es importante</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn-ok" type="submit" @click="guardarDatosForm($event)">Añadir</button>
+                        <button class="btn-ghost" type="button">Limpiar</button>
+                    </div>
+
+                    <!-- Este bloque lo controlarás tú con Vue (mostrar/ocultar y texto) -->
+                    <div class="error" v-if="errorForm == true">La información proporcionada no cumple los requisitos.
+                    </div>
+                </form>
+
+                <hr style="border:none;border-top:1px solid var(--border); margin: 16px 0;" />
+
+                <h2>B) Lista de tareas</h2>
+
+                <!-- Estado vacío (lo controlarás tú con Vue) -->
+                <p class="empty" v-if="memoriaDatos.length == 0">No hay tareas aún. Añade la primera arriba.</p>
+                <div v-else>
+                    <div id="tasks-container" v-for="(tareas, index) in memoriaDatos" :key="index">
+                        <div class="task is-priority">
+                            <div class="task-main">
+                                <p class="task-title">{{tareas.titulo}}</p>
+                                <p class="task-meta">
+                                    <span>📌 {{tareas.categoria}}</span>
+                                    <span>⏱️ {{tareas.minutosEstimados}} min</span>
+                                    <span>✅ {{tareas.estado?'completado':'pendiente'}}</span>
+                                </p>
+                            </div>
+
+                            <div class="task-actions">
+                                <button class="btn-ok" type="button">Hecha</button>
+                                <button type="button" @click="sumarTiempo(index)">+5</button>
+                                <button type="button" v-if="tareas.bloquearBtnRestarTiempo == false" @click="restarTiempo(index)">-5</button>
+                                <button type="button" v-else disabled>-5</button>
+                                <button class="btn-danger" type="button">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DERECHA: TEMPORIZADOR -->
+            <section class="card">
+                <h2>C) Mini temporizador</h2>
+
+                <div class="timer">
+                    <div class="time">10:00</div>
+                    <div class="state">Estado: parado</div>
+
+                    <div class="actions" style="justify-content:center;">
+                        <button class="btn-ok" type="button">Iniciar</button>
+                        <button type="button">Pausar</button>
+                        <button class="btn-ghost" type="button">Reiniciar</button>
+                    </div>
+                </div>
+
+                <hr style="border:none;border-top:1px solid var(--border); margin: 16px 0;" />
+
+                <h2>D) Resumen (computed)</h2>
+
+                <!-- Aquí tú pondrás los valores reactivos -->
+                <div class="summary">
+                    <div class="pill">🧾 Total: <strong>0</strong></div>
+                    <div class="pill">✅ Hechas: <strong>0</strong></div>
+                    <div class="pill">🕓 Pendientes: <strong>0</strong></div>
+                    <div class="pill">⏱️ Min pendientes: <strong>0</strong></div>
+                </div>
+
+                <p class="empty">
+                    ⚠️ Estás por encima de 120 minutos pendientes. Prioriza o divide tareas.
+                </p>
+            </section>
+
+        </div>
+    </div>
+    <script>
+        app.mount("#app");
+    </script>
+</body>
+
+</html>
