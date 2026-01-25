@@ -31,13 +31,19 @@
             </form>
         </div>
         <div>
-
+            <p>Total disponible para prestamos: {{totalDisponible}}</p>
+            <p>Media de libros {{mediaLibros}}</p>
         </div>
         <div>
-            <div v-for="(libros, index) in memoriaDisponible" :key="index">
-                <p>{{libros.titulo}}</p>
-                <p>{{libros.autor}}</p>
-                <p>{{libros.numEjemplares}}</p>
+            <div v-for="(libros, index) in memoriaDisponible" :key="index" >
+                <div class="listaLibros">
+                    <p>{{libros.titulo}}</p>
+                    <p>{{libros.autor}}</p>
+                    <p>{{libros.numEjemplares}}</p>
+                    <button @click ="sacarLibro(index)">Coger</button>
+                    <button @click = "devolverLibro(index)">Devolver</button>
+                </div>
+
             </div>
         </div>
     </section>
