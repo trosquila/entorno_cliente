@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Repaso Vue - Panel completo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <h1>
+            Venta de ropa y complementos de segunda mano
+        </h1>
+        <div class="contenidoPagina">
+            <form action="">
+                <div class="datoForm">
+                    <label for="">Prenda</label>
+                    <input type="text" name="" id="" v-model="recogerForm.prenda">
+                </div>
+                <div class="datoForm">
+                    <label for="">Color</label>
+                    <input type="color" name="" id="" v-model="recogerForm.color">
+                </div>
+                <div class="datoForm">
+                    <label for="">Talla</label>
+                    <select v-model="recogerForm.talla">
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+                <div class="datoForm">
+                    <label for="">Precio</label>
+                    <input type="number" name="" id="" v-model="recogerForm.precio">
+                </div>
+                <div class="btnForm">
+                    <button @click="guardarDatoForm($event)">Guardar</button>
+                </div>
+            </form>
+            <table>
+                <tr>
+                    <th>Prenda</th>
+                    <th>Talla</th>
+                    <th>Precio</th>
+                    <th>Acción</th>
+                    <th></th>
+                </tr>
+                <tr v-for="(prendas, index) in prendasDisponibles" :key="index">
+                    <td>{{prendas.prenda}}</td>
+                    <td>{{prendas.talla}}</td>
+                    <td>
+                        <input type="number" name="" id="" v-model="prendas.precio"
+                            v-if="prendas.modificarPrecio == false" disabled>
+                        <input type="number" name="" id="" v-model="prendas.precio" v-else>
+                    </td>
+                    <td>
+                        <button @click="controlBtnModificar(index)"
+                            v-if="prendas.modificarPrecio == false">Modificar</button>
+                        <button @click="controlGuardar(index)" v-else>Guardar</button>
+                    </td>
+
+                    <td><button @click="venderPrenda(index)">Vender</button></td>
+                </tr>
+            </table>
+            <div class="contenedorTexto">
+                <p v-if="prendasDisponibles.length == 0">
+                    Enhorabuena, parece que
+                    has vendido todas las prendas que has puesto a la venta. ¿Por qué no sigues vendiendo lo que ya no
+                    usas?
+                </p>
+            </div>
+            <div class="tablaGrande">
+                <table class="tablaGrande">
+                    <tr>
+                        <th>Tipo de Prenda</th>
+                        <th>Talla</th>
+                        <th>Precio de venta</th>
+                    </tr>
+                    <tr v-for="(vendido, index) in prendasVendidas" :key="index">
+                        <td>{{vendido.prenda}}</td>
+                        <td>{{vendido.talla}}</td>
+                        <td>{{vendido.precio}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        app.mount("#app");
+    </script>
+
+</body>
+
+</html>
