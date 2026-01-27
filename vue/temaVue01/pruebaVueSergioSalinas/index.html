@@ -55,9 +55,8 @@
                     <td>{{prendas.prenda}}</td>
                     <td>{{prendas.talla}}</td>
                     <td>
-                        <input type="number" name="" id="" v-model="prendas.precio"
-                            v-if="prendas.modificarPrecio == false" disabled>
-                        <input type="number" name="" id="" v-model="prendas.precio" v-else>
+                        <input type="number" name="" id="" v-model="prendas.precio" v-if="prendas.modificarPrecio == false" disabled>
+                        <input type="number" name="" id="" v-model="prendas.memoriaModPrecio" v-else>
                     </td>
                     <td>
                         <button @click="controlBtnModificar(index)"

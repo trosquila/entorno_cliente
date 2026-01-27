@@ -7,11 +7,11 @@ const app = Vue.createApp({
             color: '#000000',
             talla: '',
             precio: 0,
-            modificarPrecio: false
+            modificarPrecio: false,
+            memoriaModPrecio: 0
         })
         let prendasDisponibles = ref([]);
         let prendasVendidas = ref([]);
-        let memoriaModPrecio = ref();
         let guardarDatoForm = (event) =>{
             event.preventDefault();
             const prenda = {... recogerForm.value};
@@ -21,20 +21,21 @@ const app = Vue.createApp({
             prenda.color == ''? camposCompletos = false:'';
             prenda.talla == ''? camposCompletos = false:'';
             prenda.precio == 0? camposCompletos = false:'';
-
+            
+            camposCompletos? prenda.memoriaModPrecio = prenda.precio: '';
             camposCompletos? prendasDisponibles.value.push(prenda): '';
             prendasDisponibles.value.modificarPrecio = false;
         }
 
         let controlBtnModificar = (index) =>{
-            memoriaModPrecio.value = {... prendasDisponibles.value[index].precio};
             prendasDisponibles.value[index].modificarPrecio = true;
         }
 
         let controlGuardar = (index) =>{
             prendasDisponibles.value[index].modificarPrecio = false;
-            const precio = {... memoriaModPrecio};
-            prendasDisponibles.value[index].precio = memoriaModPrecio.value;
+            const precio = {... prendasDisponibles.value[index].memoriaModPrecio};
+            prendasDisponibles.value[index].precio = precio;
+            prendasDisponibles.value[index].memoriaModPrecio = 0;
         }
 
         let venderPrenda = (index) =>{
@@ -50,7 +51,6 @@ const app = Vue.createApp({
 
         return {
             recogerForm,
-            memoriaModPrecio,
             prendasDisponibles,
             prendasVendidas,
             guardarDatoForm,
