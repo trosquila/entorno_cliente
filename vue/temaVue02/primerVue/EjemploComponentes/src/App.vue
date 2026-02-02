@@ -1,11 +1,52 @@
-<script setup></script>
-
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <PiePagina :tel-user="telefono" dir="C/falsa 123" />
+  <h1>{{ mensaje }}</h1>
+  <hr />
+
+  <span>Libros disponibles:</span>
+  <ListaLibros :libros="libros" />
+
+  <hr />
+
+  <PiePagina :tel-user="telefono" dir="C/Arriba 25" />
 </template>
 
-<style scoped></style>
+<script>
+  import { ref } from "vue"
+  import PiePagina from "./components/PiePagina.vue"
+  import ListaLibros from "./components/ListaLibros.vue"
+
+  export default {
+    name: "App",
+    components: {
+      PiePagina,
+      ListaLibros
+    },
+    setup() {
+      const mensaje = ref("Librería Mi Mundo de Papel")
+      const telefono = ref(923451111)
+      const libros = ref([
+        { titulo: "La villa de las telas" },
+        { titulo: "La isla de las tormentas" },
+        { titulo: "Dime quien soy" }
+      ])
+
+      const mostrarAlerta = () => {
+        alert("Número de libros almacenados: " + libros.value.length)
+      }
+
+      return {
+        mensaje,
+        telefono,
+        libros,
+        mostrarAlerta
+      }
+    }
+  }
+</script>
+
+<style>
+  h1 {
+    text-align: center;
+  }
+</style>

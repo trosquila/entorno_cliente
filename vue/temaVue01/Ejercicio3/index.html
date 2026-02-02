@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos básicos de Vue</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./js/script.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>Propósitos de año nuevo:</h1>
+        <ul v-if="propositos.length>0 && !propositos.every(prop=>prop.activo===true)">
+            <li v-for="proposito in propositos" :class="{esconder:proposito.activo}">
+                <p v-if="proposito.hecho===false">{{proposito.texto}}</p>
+                <del @dblclick="proposito.activo=true" v-else>{{proposito.texto}}</del>
+                <input type="checkbox" v-model="proposito.hecho">
+            </li>
+        </ul>
+        <p v-else>La lista de propósitos está vacía</p>
+        <input type="text" v-model="nuevoProposito.texto">
+        <button type="submit" @click="agregarProposito">Añadir propósito</button><br><br>
+        <button type="submit" @click="eliminarProposito">Eliminar propósitos</button>
+    </div>
+    <script>
+        const mountedApp1 = app.mount("#app");
+    </script>
+</body>
+
+</html>
