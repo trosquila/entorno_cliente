@@ -5,7 +5,7 @@ import { ref } from 'vue';
 
     let nuevoProposito= ref("");
     let guardarProposito = () =>{
-        propositos.push({
+        propsNuevoProposito.propositos.push({
             texto: nuevoProposito.value,
             hecho: false
         })
