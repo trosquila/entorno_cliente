@@ -10,9 +10,18 @@ import { ref } from 'vue';
             hecho: false
         })
     }
+
+    let propositoEnter = (event) =>{
+        if(event.key == 'Enter'){
+                    propsNuevoProposito.propositos.push({
+            texto: nuevoProposito.value,
+            hecho: false
+        })
+        }
+    }
 </script>
 <template>
     <h2>Nuevo proposito</h2>
-    <input type="text" name="nuevoProposito" id="nuevoProposito" v-model="nuevoProposito">
+    <input type="text" name="nuevoProposito" id="nuevoProposito" v-model="nuevoProposito" @keypress="propositoEnter($event)">
     <button type="button" @click="guardarProposito"> Nuevo proposito</button>
 </template>
