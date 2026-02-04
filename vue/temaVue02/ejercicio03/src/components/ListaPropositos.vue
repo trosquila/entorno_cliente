@@ -1,5 +1,7 @@
 <script setup>  
     defineProps(['propositos']);
+
+    
 </script>
 
 <template>
