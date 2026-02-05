@@ -22,8 +22,16 @@ import { ref } from 'vue';
 
 
 </script>
+<style>
+    .h2NuevoProp{
+        background-color: cadetblue;
+    }
+    .textoNuevoProp{
+        font-family: Arial, Helvetica, sans-serif !important;
+    }
+</style>
 <template>
-    <h2>Nuevo proposito</h2>
+    <h2 class="h2NuevoProp textoNuevoProp">Nuevo proposito</h2>
     <input type="text" name="nuevoProposito" id="nuevoProposito" v-model="nuevoProposito" @keypress="propositoEnter($event)">
     <button type="button" @click="notifyParent"> Nuevo proposito</button>
 </template>

@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import ListaPropositos from './components/ListaPropositos.vue'
 import NuevoProposito from './components/NuevoProposito.vue'
 import './assets/style.css'
+import TablaPropositos from './components/tablaPropositos.vue'
 
 const listaPropositos = ref([
   { texto: "Hacer deporte", hecho: false, activo: false },
@@ -36,7 +37,8 @@ const aplicarRosa = computed(() => hechos.value < 2);
     </h1>
     <ListaPropositos :propositos="listaPropositos"></ListaPropositos>
     <NuevoProposito :propositos="listaPropositos" @guardarProposito="guardar"></NuevoProposito>
-  <button type="button" @click="borrarLista">Borrar lista</button>
+    <button type="button" @click="borrarLista">Borrar lista</button>
+    <TablaPropositos :propositos="listaPropositos" ></TablaPropositos>
 </template>
 
 <style scoped></style>
