@@ -1,4 +1,5 @@
 <script setup>
+    const props = defineProps(['listadoCitas'])
 //obtener primerDiaMes
 const generarCalendario = () =>{
     let calendario = [];
@@ -6,17 +7,25 @@ const generarCalendario = () =>{
     const mesFebrero = new Date(2021, 2, 1);
     const primerDiaMes = mesFebrero.getDay();
     const numeroDias = diasEnUnMes(mesFebrero.getMonth(), mesFebrero.getFullYear());
-    let dia = 0;
+    let dia = {
+        num: 0,
+        masInfo: ''
+        };
     
     for( let s = 0; s < 5; s++){
         let semana = [];
         for (let d = 0; d < 7; d++) {
-            if(dia < primerDiaMes || dia > numeroDias){
+            if(dia.num < primerDiaMes || dia.num > numeroDias){
                 semana.push('');
             }else{
-                semana.push(dia);
+                let buscarCita = props.listadoCitas.find(element => element.dia == dia.num);
+                if(buscarCita){
+                    dia.masInfo = buscarCita;
+                }
+                
+                semana.push({...dia});
             }
-            dia++;
+            dia.num++;  
         }
         calendario.push(semana);
     }
@@ -55,22 +64,26 @@ th {
 <template>
     <div class="contenedorTabla">
         <table class="calendario">
-            <tr>
-                <th>Lunes</th>
-                <th>Martes</th>
-                <th>Miercoles</th>
-                <th>Jueves</th>
-                <th>Viernes</th>
-                <th>Sabado</th>
-                <th>Domingo</th>
-            </tr>
-            <tr v-for="(semana, index) in calendario" :key="index">
-
-                <td v-for="(dia, index) in semana" :key="index">
-                    {{ dia }}   
-                </td>
-
-            </tr>
+            <thead>
+                <tr>
+                    <th>Lunes</th>
+                    <th>Martes</th>
+                    <th>Miercoles</th>
+                    <th>Jueves</th>
+                    <th>Viernes</th>
+                    <th>Sabado</th>
+                    <th>Domingo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(semana, index) in calendario" :key="index">
+                    <td v-for="(diaMes, index) in semana" :key="index">
+                        
+                        {{ diaMes.num }}
+                    </td>
+                </tr>
+            </tbody>
+            
         </table>
     </div>
 
