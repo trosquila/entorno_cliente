@@ -7,6 +7,8 @@ import Formulario from './components/Formulario.vue';
 
   function almacenarCita(value){
     citas.value.push(value);
+    console.log(citas);
+    
   }
 </script>
 

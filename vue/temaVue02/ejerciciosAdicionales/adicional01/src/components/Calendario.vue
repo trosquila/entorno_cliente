@@ -60,6 +60,9 @@ th {
     padding: 5px 10px;
     background-color: rgb(255, 223, 182);
 }
+.rojo{
+    color: red;
+}
 </style>
 <template>
     <div class="contenedorTabla">
@@ -77,9 +80,9 @@ th {
             </thead>
             <tbody>
                 <tr v-for="(semana, index) in calendario" :key="index">
-                    <td v-for="(diaMes, index) in semana" :key="index">
+                    <td v-for="(diaMes, index) in semana" :key="index" :class="{'rojo':diaMes.masInfo}">
                         
-                        {{ diaMes.num }}
+                        {{ diaMes.num }}{{ diaMes.masInfo }}
                     </td>
                 </tr>
             </tbody>

@@ -9,8 +9,8 @@
 
     function procesoGuardado(event){
         event.preventDefault();
-
-        emit('guardarCita', nuevoDato.value);
+        const dato = {...nuevoDato};
+        emit('guardarCita', dato);
     }
 </script>
 <template>
