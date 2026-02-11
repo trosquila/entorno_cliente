@@ -71,7 +71,7 @@ function claseGenero(genero) {
     return 'g-scifi'
   }
 
-  return ''
+  return '';
 }
 </script>
 

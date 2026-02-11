@@ -1,15 +1,16 @@
 <script setup>
-    const props = defineProps(['listadoCitas'])
-//obtener primerDiaMes
+import { computed } from "vue";
+const props = defineProps(['listadoCitas'])
 const generarCalendario = () =>{
     let calendario = [];
 
     const mesFebrero = new Date(2021, 2, 1);
     const primerDiaMes = mesFebrero.getDay();
     const numeroDias = diasEnUnMes(mesFebrero.getMonth(), mesFebrero.getFullYear());
+    
     let dia = {
         num: 0,
-        masInfo: ''
+        reserva: false
         };
     
     for( let s = 0; s < 5; s++){
@@ -17,12 +18,7 @@ const generarCalendario = () =>{
         for (let d = 0; d < 7; d++) {
             if(dia.num < primerDiaMes || dia.num > numeroDias){
                 semana.push('');
-            }else{
-                let buscarCita = props.listadoCitas.find(element => element.dia == dia.num);
-                if(buscarCita){
-                    dia.masInfo = buscarCita;
-                }
-                
+            }else{                
                 semana.push({...dia});
             }
             dia.num++;  
@@ -30,16 +26,25 @@ const generarCalendario = () =>{
         calendario.push(semana);
     }
     return calendario;
-
 }
 
 function diasEnUnMes(mes, year) {
     return new Date(year, mes, 0).getDate();
 }
+
 let calendario = generarCalendario();
 
-
-</script>
+const diaReservado = computed (() => {
+    calendario.forEach(element => {
+        element = element.map(campoLista =>{
+            let buscarCita = props.listadoCitas.find(element => element.dia == campoLista.num);
+            if(buscarCita){
+                return campoLista.reserva = true;
+            }
+        })
+    });
+});
+</script>   
 <style>
 .contenedorTabla{
     margin-top: 20px;
@@ -63,6 +68,7 @@ th {
 .rojo{
     color: red;
 }
+
 </style>
 <template>
     <div class="contenedorTabla">
@@ -80,9 +86,9 @@ th {
             </thead>
             <tbody>
                 <tr v-for="(semana, index) in calendario" :key="index">
-                    <td v-for="(diaMes, index) in semana" :key="index" :class="{'rojo':diaMes.masInfo}">
+                    <td v-for="(diaMes, index) in semana" :key="index" >
                         
-                        {{ diaMes.num }}{{ diaMes.masInfo }}
+                        {{ diaMes.num }}
                     </td>
                 </tr>
             </tbody>
