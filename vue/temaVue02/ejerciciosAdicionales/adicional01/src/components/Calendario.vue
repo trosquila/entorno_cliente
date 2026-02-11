@@ -3,7 +3,7 @@ import { computed } from "vue";
 const props = defineProps(['listadoCitas'])
 const generarCalendario = () =>{
     let calendario = [];
-
+    
     const mesFebrero = new Date(2021, 2, 1);
     const primerDiaMes = mesFebrero.getDay();
     const numeroDias = diasEnUnMes(mesFebrero.getMonth(), mesFebrero.getFullYear());
@@ -35,15 +35,25 @@ function diasEnUnMes(mes, year) {
 let calendario = generarCalendario();
 
 const diaReservado = computed (() => {
-    calendario.forEach(element => {
-        element = element.map(campoLista =>{
-            let buscarCita = props.listadoCitas.find(element => element.dia == campoLista.num);
+    return calendario.map(element => {
+        return element.map(campoLista =>{
+            let buscarCita = props.listadoCitas.find(element => Number(element.dia) === Number(campoLista.num));
             if(buscarCita){
-                return campoLista.reserva = true;
+                return {
+                    dia: campoLista.num,
+                    reserva: true
+                };
+            }else{
+                return {
+                    dia: campoLista.num,
+                    reserva: false
+                }
             }
-        })
+        });
     });
 });
+console.log(diaReservado);
+
 </script>   
 <style>
 .contenedorTabla{
@@ -68,7 +78,6 @@ th {
 .rojo{
     color: red;
 }
-
 </style>
 <template>
     <div class="contenedorTabla">
@@ -85,10 +94,10 @@ th {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(semana, index) in calendario" :key="index">
+                <tr v-for="(semana, index) in diaReservado" :key="index">
                     <td v-for="(diaMes, index) in semana" :key="index" >
                         
-                        {{ diaMes.num }}
+                        {{ diaMes.dia}}
                     </td>
                 </tr>
             </tbody>
