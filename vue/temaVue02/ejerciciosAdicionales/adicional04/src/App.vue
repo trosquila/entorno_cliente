@@ -1,31 +1,41 @@
 <script setup>
+import { ref } from 'vue';
+import Formulario from './components/Formulario.vue';
+import Listado from './components/Listado.vue';
+import Comentarios from './components/Comentarios.vue';
+const listadoPeliculas = ref([]);
 
-  import { ref } from "vue";
-  import AddPelicula from "./components/AddPelicula.vue";
-  import ListarPeliculas from "./components/listarPeliculas.vue";
-  import DejarComentario from "./components/DejarComentario.vue";
-
-  const carteleraOrdenada = ref([]);
-
-  function guardarNuevaPelicula(pelicula){
-    carteleraOrdenada.value.push(pelicula);
-    ordenarCartelera();
-  }
-
-  function ordenarCartelera(){
-    carteleraOrdenada.value = carteleraOrdenada.value.sort((a, b) => {
-        const fechaA = new Date(a.fechaEstreno.split('-').reverse().join('-'));
-        const fechaB = new Date(b.fechaEstreno.split('-').reverse().join('-'));
-        return fechaA - fechaB;
-    });
-  }
+function guardarDato (value){
+  listadoPeliculas.value.push(value);
+  ordenarDatos();
+}
+function ordenarDatos() {
+  listadoPeliculas.value.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+}
+function guardarCambiosFecha(posicion, fecha) {
+  listadoPeliculas.value[posicion].fecha = fecha;
   
+}
+
+function guardarCambiosTitulo(posicion, titulo) {
+  listadoPeliculas.value[posicion].titulo = titulo;
+}
+
+function addComentario(posicion, nuevoComentario) {
+    listadoPeliculas.value[posicion].Comentarios = nuevoComentario;
+    listadoPeliculas.value[posicion].comentariosAct = false;
+}
+function activarComentarios(posicion){
+      listadoPeliculas.value[posicion].comentariosAct = true;
+      console.log('activo '+listadoPeliculas.value[posicion].comentariosAct);
+      
+}
 </script>
 
 <template>
-  <AddPelicula @guardarPelicula="guardarNuevaPelicula"></AddPelicula>
-  <ListarPeliculas :cartelera="carteleraOrdenada"></ListarPeliculas>
-  <DejarComentario></DejarComentario>
+  <Formulario @guardarEnMemoria = "guardarDato"></Formulario>
+  <Listado :memoria="listadoPeliculas" @guardarCambiosFecha="guardarCambiosFecha" @guardarCambiosTitulo="guardarCambiosTitulo" @activarComentario="activarComentarios"></Listado>
+  <Comentarios @guardarNuevoComentario ="addComentario" :memoria="listadoPeliculas"></Comentarios>
 </template>
 
 <style scoped></style>
