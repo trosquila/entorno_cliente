@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Bibliografia from '@/views/Bibliografia.vue'
+import path from 'node:path/posix'
+import MostrarTexto from '@/views/MostrarTexto.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +24,12 @@ const router = createRouter({
       path: '/bibliografia',
       name: 'bibliografia',
       component: Bibliografia,
+    },
+    {
+      path: '/mostrarTexto/:id',
+      name: 'mostrar',
+      component: MostrarTexto,
+      props: true, 
     },
   ],
 })
