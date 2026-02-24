@@ -1,7 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-const result = ref('Cargando...'); 
+// 1. Definimos una variable reactiva vacía
+const result = ref(''); 
 
 async function cargarArticulos() {
     try {
@@ -9,17 +10,26 @@ async function cargarArticulos() {
         if (!consulta.ok) throw new Error(`Error: ${consulta.status}`);
         
         const datos = await consulta.json();
+        // 2. Asignamos el valor a la referencia
         result.value = datos; 
     } catch (error) {
         result.value = "Error al cargar los datos";
     }
 }
 
+// 3. Llamamos a la función cuando el componente se monta
 onMounted(() => {
     cargarArticulos();
 });
 </script>
-
 <template>
-    <p>{{ result }}</p>
+    <div>
+        <h2>Articulos</h2>
+        <div class="articulos">
+            <RouterLink v-for="(articulo, index) in result" :key="index" :to="`/verArticulo/${articulo.id}`">{{articulo.title}}</RouterLink>
+        </div>
+        
+    </div>
+    
+
 </template>
