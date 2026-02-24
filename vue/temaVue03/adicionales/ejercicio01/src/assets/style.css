@@ -1,0 +1,11 @@
+body{
+    margin: 0;
+}
+header{
+    background-color: rgb(186, 255, 255);
+    text-align: center;
+}
+main{
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+}
