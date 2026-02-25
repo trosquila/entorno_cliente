@@ -29,5 +29,19 @@ const router = createRouter({
     },
   ],
 })
+router.beforeEach((to, from) => {
+const isAuthenticated = Boolean(localStorage.getItem("edad"));
+const edad = localStorage.getItem("edad");
+if (to.name !== "inicio" && !isAuthenticated) {
+  return { name: "inicio" };
+}
 
+if ((to.name === "verArticulo" && edad < 18) || !isAuthenticated) {
+  return { name: "articulos" };
+}
+
+if ((to.name === "articulos" && edad < 16) || !isAuthenticated) {
+  return { name: "inicio" };
+}
+});
 export default router
