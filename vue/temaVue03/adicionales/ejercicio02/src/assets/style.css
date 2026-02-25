@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+}
+header{
+    background-color: aliceblue;
+    text-align: center;
+    padding: 30px 0;
+}
+main{
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+    margin: 30px;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+
+}
+
+.menu a{
+    text-decoration: none;
+}
+.articulos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
