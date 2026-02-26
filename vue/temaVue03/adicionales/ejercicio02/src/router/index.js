@@ -30,18 +30,32 @@ const router = createRouter({
   ],
 })
 router.beforeEach((to, from) => {
-const isAuthenticated = Boolean(localStorage.getItem("edad"));
-const edad = localStorage.getItem("edad");
-if (to.name !== "inicio" && !isAuthenticated) {
-  return { name: "inicio" };
-}
+  const edad = localStorage.getItem("edad");
+  const isAuthenticated = Boolean(edad);
+  const edadNum = Number(edad);
 
-if ((to.name === "verArticulo" && edad < 18) || !isAuthenticated) {
-  return { name: "articulos" };
-}
+  // 1. SI NO ESTÁ AUTENTICADO:
+  // Solo permitimos que se quede en 'inicio'. Si intenta ir a otro lado, a inicio.
+  if (!isAuthenticated) {
+    if (to.name !== 'inicio') {
+      return { name: 'inicio' };
+    }
+    return; // Si ya va a inicio, no hagas nada más.
+  }
 
-if ((to.name === "articulos" && edad < 16) || !isAuthenticated) {
-  return { name: "inicio" };
-}
+  // 2. SI ESTÁ AUTENTICADO (Ya sabemos que hay edad):
+  // Filtro para VerArticulo
+  if (to.name === "verArticulo" && edadNum < 18) {
+    return { name: "articulos" };
+  }
+
+  // Filtro para Articulos
+  if (to.name === "articulos" && edadNum < 16) {
+    // Si tiene menos de 16 y no estamos ya en inicio, mándalo a inicio
+    if (to.name !== 'inicio') {
+      return { name: "inicio" };
+    }
+  }
 });
+
 export default router

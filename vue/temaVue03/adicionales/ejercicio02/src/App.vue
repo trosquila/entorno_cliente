@@ -11,6 +11,7 @@ import Menu from './components/Menu.vue';
   <main>
     <RouterView></RouterView>
     <Menu></Menu>
+      
   </main>
 </template>
 
