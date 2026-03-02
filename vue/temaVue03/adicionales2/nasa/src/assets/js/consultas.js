@@ -8,3 +8,15 @@ export async function getImagenDelDia() {
     
     return respuesta;
 }   
+
+export async function getImagenDelDiaFiltro(fecha) {
+    const consulta = await fetch(`${url}/planetary/apod?date=${fecha}&api_key=${userKey}`);
+    const respuesta = await consulta.json();
+
+    if (!respuesta.ok) {
+        return null;
+    }
+    console.log(`con filtro ${url}/planetary/apod?date=${fecha}&api_key=${userKey}`);
+    
+    return respuesta;
+}
