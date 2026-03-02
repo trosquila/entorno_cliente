@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+header{
+    background-color: rgb(215, 245, 250);
+    padding: 10px 40px;
+    text-align: center;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(238, 247, 248);
+}
+nav > div{
+    flex: 1 ;
+    padding: 10px 0;
+    text-align: center;
+    border-top: 2px solid rgb(15, 115, 133);
+}
+
+nav  div:hover{
+    background-color: rgb(159, 225, 236);
+    color: #000;
+}
+
+nav a{
+    text-decoration: none;
+    padding: 0 5px;
+    color: #000;
+}
+
+.fechaHoy{
+    margin-top: 10%;
+    text-align: center;
+}
