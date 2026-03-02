@@ -1,3 +1,4 @@
+import ImagenDelDia from '@/views/ImagenDelDia.vue'
 import PanelPrincipal from '@/views/PanelPrincipal.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/panelPrincipal',
       name: 'panelPrincipal',
       component: PanelPrincipal,
+    },
+    {
+      path: '/imagenDelDia',
+      name: 'imagenDelDia',
+      component: ImagenDelDia,
     },
   ],
 })

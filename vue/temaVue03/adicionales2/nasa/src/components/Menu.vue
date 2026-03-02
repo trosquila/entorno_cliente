@@ -8,7 +8,7 @@
             <RouterLink to="/panelPrincipal">Panel Principal</RouterLink>
         </div>
         <div>
-            <RouterLink to="">Imagen del Día</RouterLink>
+            <RouterLink to="/imagenDelDia">Imagen del Día</RouterLink>
         </div>
         <div>
             <RouterLink to="">Asterioides Cercanos</RouterLink>
