@@ -15,7 +15,7 @@
 
     function masInfoAsteroide(idAsteroide) {
         router.push({
-            name:'masInfoA',
+            name:'masInfoAsteroide',
             params:{id: idAsteroide}
         })
     }

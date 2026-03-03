@@ -1,6 +1,7 @@
 import Asteroides from '@/views/Asteroides.vue'
 import ImagenDelDia from '@/views/ImagenDelDia.vue'
 import PanelPrincipal from '@/views/PanelPrincipal.vue'
+import MasInfoAsteroide from '@/views/MasInfoAsteroide.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -22,9 +23,9 @@ const router = createRouter({
       component: Asteroides,
     },
     {
-      path: '/asteroides',
-      name: 'asteroides',
-      component: Asteroides,
+      path: '/masInfoAsteroide/:id',
+      name: 'masInfoAsteroide',
+      component: MasInfoAsteroide,
     },
   ],
 })

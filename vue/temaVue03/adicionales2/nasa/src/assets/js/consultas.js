@@ -32,3 +32,19 @@ export async function getAsteroidesCercanos() {
     
     return respuesta.near_earth_objects;
 }
+
+export async function getAsteroidesPorId(idAsteroide) {
+    const consulta = await fetch(`${url}/neo/rest/v1/neo/${idAsteroide}?api_key=${userKey}`);
+    const respuesta = await consulta.json();
+
+    if (!consulta.ok) {
+        console.log('Error');
+        
+        return null;
+    }
+
+    console.log(respuesta);
+    console.log(`${url}/neo/rest/v1/neo/${idAsteroide}?api_key=${userKey}`);
+    
+    return respuesta;
+}
