@@ -11,7 +11,7 @@
             <RouterLink to="/imagenDelDia">Imagen del Día</RouterLink>
         </div>
         <div>
-            <RouterLink to="">Asterioides Cercanos</RouterLink>
+            <RouterLink to="/asteroides">Asterioides Cercanos</RouterLink>
         </div>
         <div>
             <RouterLink to="">Búsqueda por ID</RouterLink>

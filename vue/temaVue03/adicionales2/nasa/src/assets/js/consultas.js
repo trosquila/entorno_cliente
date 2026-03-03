@@ -12,11 +12,23 @@ export async function getImagenDelDia() {
 export async function getImagenDelDiaFiltro(fecha) {
     const consulta = await fetch(`${url}/planetary/apod?date=${fecha}&api_key=${userKey}`);
     const respuesta = await consulta.json();
-
-    if (!respuesta.ok) {
+    console.log(respuesta);
+    
+    if (!consulta.ok) {
+        console.log('Error');
+        
         return null;
     }
     console.log(`con filtro ${url}/planetary/apod?date=${fecha}&api_key=${userKey}`);
     
     return respuesta;
+}
+
+export async function getAsteroidesCercanos() {
+    const consulta = await fetch(`${url}/neo/rest/v1/neo/browse?api_key=${userKey}`);
+    const respuesta = await consulta.json();
+    console.log(respuesta);
+    console.log(`${url}/neo/rest/v1/neo/browse?api_key=${userKey}`);
+    
+    return respuesta.near_earth_objects;
 }

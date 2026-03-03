@@ -10,6 +10,8 @@
 
     async function buscarImagenPorFecha(){
         const fecha = fechaFiltro.value;
+        console.log(fecha);
+        
         imagenDelDia.value = await getImagenDelDiaFiltro(fecha);
     }
 
@@ -17,7 +19,12 @@
 </script>
 <template>
     <section class="contenedorImagenDelDia" v-if="imagenDelDia">
-        <img :src="imagenDelDia.url" alt="">
+
+        <img v-if="imagenDelDia.media_type!='video'" :src="imagenDelDia.url" alt="">
+        <video width="640" height="360" controls v-else>
+        <source :src="imagenDelDia.url" type="video/webm">
+        Tu navegador no soporta la etiqueta de video
+        </video>
         <div class="datosImagen">
             <p>Título: {{ imagenDelDia.title }}</p>
             <p>Fecha: {{ imagenDelDia.date }}</p>

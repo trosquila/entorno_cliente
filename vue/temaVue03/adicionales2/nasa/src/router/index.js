@@ -1,3 +1,4 @@
+import Asteroides from '@/views/Asteroides.vue'
 import ImagenDelDia from '@/views/ImagenDelDia.vue'
 import PanelPrincipal from '@/views/PanelPrincipal.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -14,6 +15,11 @@ const router = createRouter({
       path: '/imagenDelDia',
       name: 'imagenDelDia',
       component: ImagenDelDia,
+    },
+    {
+      path: '/asteroides',
+      name: 'asteroides',
+      component: Asteroides,
     },
   ],
 })

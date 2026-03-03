@@ -39,6 +39,7 @@ nav a{
     width: 80%;
     margin: auto;
     margin-top: 10%;
+    margin-bottom: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,4 +54,32 @@ nav a{
     border: 3px solid rgb(15, 115, 133);
     padding: 10px;
     margin: 20px 0;
+}
+.contenedorAsteroides{
+    width: 80%;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.contenedorAsteroides table{
+    border-collapse: collapse;
+}
+
+.contenedorAsteroides table, td{
+    border: 2px solid rgb(15, 115, 133);
+    
+}
+
+.contenedorAsteroides th{
+    border: 2px solid rgb(15, 115, 133);
+    padding: 8px 14px;
+    background-color: rgb(159, 225, 236);
+}
+
+.contenedorAsteroides td{
+    padding: 6px 12px;
+    text-align: center;
 }
