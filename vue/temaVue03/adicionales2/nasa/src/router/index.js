@@ -21,6 +21,11 @@ const router = createRouter({
       name: 'asteroides',
       component: Asteroides,
     },
+    {
+      path: '/asteroides',
+      name: 'asteroides',
+      component: Asteroides,
+    },
   ],
 })
 
