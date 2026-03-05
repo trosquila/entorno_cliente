@@ -1,14 +1,14 @@
 <script setup>
     import { onMounted, ref } from 'vue';
-    import { getAsteroidesPorId } from '../assets/js/consultas.js'
     import { useRoute } from 'vue-router';
     import '../assets/styles/global.css';
     let asteroide = ref(null);
 
     const route = useRoute();
-    const idAsteroide = route.params.id;
+
+
     onMounted(async () =>{
-        asteroide.value = await getAsteroidesPorId(idAsteroide);
+        asteroide.value = route.meta.nasaData;
     });
 
     
