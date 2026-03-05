@@ -72,3 +72,25 @@ main{
 .enlaceRed:active {
     transform: scale(0.95);
 }
+
+.contenedorClientes{
+    width: 80%;
+    margin: auto;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+}
+.contenedorClientes table{
+    border-collapse: collapse;
+}
+.contenedorClientes table, td, th{
+    border: 2px solid rgb(207, 171, 10);
+}
+
+.contenedorClientes th{
+    padding: 10px 15px;
+    background-color: rgb(255, 241, 181);
+}
+.contenedorClientes td{
+    padding: 3px 6px;
+}
