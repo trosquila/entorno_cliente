@@ -1,0 +1,52 @@
+{
+  "clientes": [
+    {
+      "id": 1,
+      "nombre": "Laura",
+      "apellidos": "Gómez Ruiz",
+      "dni": "12345678A",
+      "telefono": "600123456",
+      "email": "laura@email.com"
+    },
+    {
+      "id": 2,
+      "nombre": "Carlos",
+      "apellidos": "Martín Pérez",
+      "dni": "87654321B",
+      "telefono": "611987654",
+      "email": "carlos@email.com"
+    }
+  ],
+  "vehiculos": [
+    {
+      "id": 1,
+      "marca": "Toyota",
+      "modelo": "Corolla",
+      "matricula": "1234ABC",
+      "clienteId": 1
+    },
+    {
+      "id": 2,
+      "marca": "Ford",
+      "modelo": "Focus",
+      "matricula": "5678DEF",
+      "clienteId": 2
+    }
+  ],
+  "reparaciones": [
+    {
+      "id": 1,
+      "vehiculoId": 1,
+      "descripcion": "Cambio de aceite",
+      "coste": 80,
+      "finalizada": true
+    },
+    {
+      "id": 2,
+      "vehiculoId": 2,
+      "descripcion": "Sustitución de frenos",
+      "coste": 250,
+      "finalizada": false
+    }
+  ]
+}

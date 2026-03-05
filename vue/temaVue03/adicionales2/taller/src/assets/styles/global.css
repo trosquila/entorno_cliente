@@ -1,0 +1,74 @@
+body{
+    margin: auto;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+header{
+    background-color: rgb(255, 229, 112);
+}
+h2{
+    margin: auto;
+    text-align: center;
+    padding: 30px 0;
+}
+header  nav{
+    display: flex;
+}
+
+header nav  div{
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+}
+
+header nav  div  p{
+    text-align: center;
+}
+
+header nav  div:hover{
+    background-color: rgb(255, 240, 172);
+}
+
+header nav  div:active{
+    background-color: rgb(204, 180, 72);
+    color: white;
+}
+
+main{
+    width: 80%;
+    margin: auto;
+    min-height: 80vh;
+}
+.piePagina {
+    background-color: rgb(255, 229, 112);
+    margin-top: 40px;
+    padding: 25px 0;
+    text-align: center;
+}
+
+.infoContacto p {
+    margin: 5px 0;
+}
+
+.tituloFooter {
+    margin-bottom: 10px;
+}
+
+.redesSociales {
+    margin-top: 15px;
+}
+
+.enlaceRed {
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    transition: transform 0.3s ease;
+}
+
+.enlaceRed:hover {
+    transform: scale(1.1);
+}
+
+.enlaceRed:active {
+    transform: scale(0.95);
+}
