@@ -1,4 +1,5 @@
 import Clientes from '@/views/Clientes.vue'
+import NuevoCliente from '@/views/NuevoCliente.vue'
 import Panel from '@/views/Panel.vue'
 import VerCliente from '@/views/VerCliente.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -14,13 +15,18 @@ const router = createRouter({
     },
     {
       path: '/clientes',
-      name: 'cliente',
+      name: 'clientes',
       component: Clientes,
     },
     {
-      path: '/verClientes/:id',
+      path: '/verCliente/:id',
       name: 'verVCliente',
       component: VerCliente,
+    },
+    {
+      path: '/nuevoCliente',
+      name: 'nuevoCliente',
+      component: NuevoCliente,
     },
   ],
 })

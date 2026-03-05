@@ -1,43 +1,47 @@
-body{
+body {
     margin: auto;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
-header{
+
+header {
     background-color: rgb(255, 229, 112);
 }
-h2{
+
+h2 {
     margin: auto;
     text-align: center;
     padding: 30px 0;
 }
-header  nav{
+
+header nav {
     display: flex;
 }
 
-header nav  div{
+header nav div {
     flex: 1;
     text-align: center;
     font-weight: bold;
 }
 
-header nav  div  p{
+header nav div p {
     text-align: center;
 }
 
-header nav  div:hover{
+header nav div:hover {
     background-color: rgb(255, 240, 172);
 }
 
-header nav  div:active{
+header nav div:active {
     background-color: rgb(204, 180, 72);
     color: white;
 }
 
-main{
+main {
     width: 80%;
     margin: auto;
     min-height: 80vh;
 }
+
 .piePagina {
     background-color: rgb(255, 229, 112);
     margin-top: 40px;
@@ -73,24 +77,245 @@ main{
     transform: scale(0.95);
 }
 
-.contenedorClientes{
+.contenedorClientes {
     width: 80%;
     margin: auto;
     margin-top: 10%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
-.contenedorClientes table{
+.separarTop{
+    margin-top: 40px;
+}
+
+.contenedorClientes table {
     border-collapse: collapse;
 }
-.contenedorClientes table, td, th{
+
+.contenedorClientes table,
+td,
+th {
     border: 2px solid rgb(207, 171, 10);
 }
 
-.contenedorClientes th{
+.contenedorClientes th {
     padding: 10px 15px;
     background-color: rgb(255, 241, 181);
 }
-.contenedorClientes td{
+
+.contenedorClientes td {
     padding: 3px 6px;
+}
+
+/* Contenedor general del detalle */
+.detalleCliente {
+    width: 80%;
+    margin: 60px auto 0;
+}
+
+/* “Informe” tipo ficha */
+.informe {
+    border: 2px solid rgb(207, 171, 10);
+    background: white;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+}
+
+.tituloInforme {
+    text-align: center;
+    margin: 0 0 18px 0;
+}
+
+/* Ficha (sin tabla, estilo informe) */
+.ficha {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ficha .fila {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(255, 241, 181);
+}
+
+.ficha .fila:last-child {
+    border-bottom: none;
+}
+
+.etiqueta {
+    font-weight: bold;
+}
+
+.valor {
+    text-align: left;
+}
+
+/* Vehículos: usar tabla pero “sin cuadriculado” */
+.contenedorVehiculos {
+    width: 100%;
+    margin: 0;
+    display: block;
+}
+
+.tablaInforme {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Anula tu borde de tabla dentro del informe */
+.informe table,
+.informe td,
+.informe th {
+    border: none;
+}
+
+.tablaInforme thead th {
+    background-color: rgb(255, 241, 181);
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 2px solid rgb(207, 171, 10);
+}
+
+.tablaInforme tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgb(255, 241, 181);
+}
+
+/* Botón como pides */
+.accionesCliente {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0 40px;
+}
+
+.btnEliminar {
+    background: white;
+    color: rgb(207, 171, 10);
+    border: 2px solid rgb(207, 171, 10);
+    border-radius: 0;
+    padding: 10px 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btnEliminar:hover {
+    background: rgb(207, 171, 10);
+    color: white;
+}
+
+.btnEliminar:active {
+    background: rgb(204, 180, 72);
+    color: white;
+    transform: scale(0.98);
+}
+
+.registroCliente {
+    width: 80%;
+    margin: 60px auto 0;
+}
+
+/* reutiliza la idea de “informe” */
+.registroCliente .informe {
+    border: 2px solid rgb(207, 171, 10);
+    background: white;
+    padding: 22px 26px;
+}
+
+.formCliente {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.grupo {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(255, 241, 181);
+}
+
+.grupo:last-child {
+    border-bottom: none;
+}
+
+.etiqueta {
+    font-weight: bold;
+}
+
+.campo {
+    border: 2px solid rgb(207, 171, 10);
+    padding: 10px 12px;
+    outline: none;
+    font-family: inherit;
+    background: white;
+}
+
+.campo:focus {
+    background-color: rgb(255, 241, 181);
+}
+
+/* botones */
+.accionesForm {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+/* primario: amarillo */
+.btnPrimario {
+    background: rgb(207, 171, 10);
+    color: white;
+    border: 2px solid rgb(207, 171, 10);
+    border-radius: 0;
+    padding: 10px 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btnPrimario:hover {
+    background: white;
+    color: rgb(207, 171, 10);
+}
+
+.btnPrimario:active {
+    background: rgb(204, 180, 72);
+    color: white;
+    transform: scale(0.98);
+}
+
+/* secundario: blanco */
+.btnSecundario {
+    background: white;
+    color: rgb(207, 171, 10);
+    border: 2px solid rgb(207, 171, 10);
+    border-radius: 0;
+    padding: 10px 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btnSecundario:hover {
+    background: rgb(207, 171, 10);
+    color: white;
+}
+
+.btnSecundario:active {
+    background: rgb(204, 180, 72);
+    color: white;
+    transform: scale(0.98);
+}
+
+/* responsive básico */
+@media (max-width: 700px) {
+    .grupo {
+        grid-template-columns: 1fr;
+    }
 }

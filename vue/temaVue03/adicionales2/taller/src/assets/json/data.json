@@ -1,52 +1,383 @@
 {
   "clientes": [
     {
-      "id": 1,
-      "nombre": "Laura",
-      "apellidos": "Gómez Ruiz",
-      "dni": "12345678A",
-      "telefono": "600123456",
-      "email": "laura@email.com"
-    },
-    {
-      "id": 2,
+      "id": "2",
       "nombre": "Carlos",
       "apellidos": "Martín Pérez",
       "dni": "87654321B",
       "telefono": "611987654",
       "email": "carlos@email.com"
+    },
+    {
+      "id": "3",
+      "nombre": "Ana",
+      "apellidos": "Sánchez López",
+      "dni": "11223344C",
+      "telefono": "612111222",
+      "email": "ana.sanchez@email.com"
+    },
+    {
+      "id": "4",
+      "nombre": "Javier",
+      "apellidos": "Fernández Gómez",
+      "dni": "22334455D",
+      "telefono": "613222333",
+      "email": "javier.fernandez@email.com"
+    },
+    {
+      "id": "5",
+      "nombre": "Marta",
+      "apellidos": "Díaz Romero",
+      "dni": "33445566E",
+      "telefono": "614333444",
+      "email": "marta.diaz@email.com"
+    },
+    {
+      "id": "6",
+      "nombre": "Sergio",
+      "apellidos": "Ortega Navarro",
+      "dni": "44556677F",
+      "telefono": "615444555",
+      "email": "sergio.ortega@email.com"
+    },
+    {
+      "id": "7",
+      "nombre": "Paula",
+      "apellidos": "Vega Castillo",
+      "dni": "55667788G",
+      "telefono": "616555666",
+      "email": "paula.vega@email.com"
+    },
+    {
+      "id": "8",
+      "nombre": "Diego",
+      "apellidos": "Morales Herrera",
+      "dni": "66778899H",
+      "telefono": "617666777",
+      "email": "diego.morales@email.com"
+    },
+    {
+      "id": "9",
+      "nombre": "Lucía",
+      "apellidos": "Cruz Torres",
+      "dni": "77889900J",
+      "telefono": "618777888",
+      "email": "lucia.cruz@email.com"
+    },
+    {
+      "id": "10",
+      "nombre": "Alberto",
+      "apellidos": "Ramos Gil",
+      "dni": "88990011K",
+      "telefono": "619888999",
+      "email": "alberto.ramos@email.com"
+    },
+    {
+      "id": "11",
+      "nombre": "Noelia",
+      "apellidos": "Iglesias Vidal",
+      "dni": "99001122L",
+      "telefono": "620111222",
+      "email": "noelia.iglesias@email.com"
     }
   ],
   "vehiculos": [
     {
-      "id": 1,
-      "marca": "Toyota",
-      "modelo": "Corolla",
-      "matricula": "1234ABC",
-      "clienteId": 1
-    },
-    {
-      "id": 2,
+      "id": "2",
       "marca": "Ford",
       "modelo": "Focus",
       "matricula": "5678DEF",
       "clienteId": 2
+    },
+    {
+      "id": "3",
+      "marca": "Seat",
+      "modelo": "Ibiza",
+      "matricula": "9012GHI",
+      "clienteId": 3
+    },
+    {
+      "id": "4",
+      "marca": "Volkswagen",
+      "modelo": "Golf",
+      "matricula": "3456JKL",
+      "clienteId": 4
+    },
+    {
+      "id": "5",
+      "marca": "Renault",
+      "modelo": "Clio",
+      "matricula": "7890MNO",
+      "clienteId": 5
+    },
+    {
+      "id": "6",
+      "marca": "Peugeot",
+      "modelo": "208",
+      "matricula": "1122PQR",
+      "clienteId": 6
+    },
+    {
+      "id": "7",
+      "marca": "Hyundai",
+      "modelo": "i30",
+      "matricula": "3344STU",
+      "clienteId": 7
+    },
+    {
+      "id": "8",
+      "marca": "Kia",
+      "modelo": "Ceed",
+      "matricula": "5566VWX",
+      "clienteId": 8
+    },
+    {
+      "id": "9",
+      "marca": "BMW",
+      "modelo": "320d",
+      "matricula": "7788YZA",
+      "clienteId": 9
+    },
+    {
+      "id": "10",
+      "marca": "Audi",
+      "modelo": "A3",
+      "matricula": "9900BCD",
+      "clienteId": 10
+    },
+    {
+      "id": "11",
+      "marca": "Mercedes",
+      "modelo": "A200",
+      "matricula": "2468EFG",
+      "clienteId": 11
+    },
+    {
+      "id": "14",
+      "marca": "Ford",
+      "modelo": "Fiesta",
+      "matricula": "9753NOP",
+      "clienteId": 2
+    },
+    {
+      "id": "15",
+      "marca": "Nissan",
+      "modelo": "Qashqai",
+      "matricula": "1111QRS",
+      "clienteId": 4
+    },
+    {
+      "id": "16",
+      "marca": "Opel",
+      "modelo": "Corsa",
+      "matricula": "2222TUV",
+      "clienteId": 6
+    },
+    {
+      "id": "17",
+      "marca": "Skoda",
+      "modelo": "Octavia",
+      "matricula": "3333WXY",
+      "clienteId": 9
+    },
+    {
+      "id": "18",
+      "marca": "Honda",
+      "modelo": "Civic",
+      "matricula": "4444ZAB",
+      "clienteId": 10
     }
   ],
   "reparaciones": [
     {
-      "id": 1,
-      "vehiculoId": 1,
-      "descripcion": "Cambio de aceite",
-      "coste": 80,
-      "finalizada": true
-    },
-    {
-      "id": 2,
+      "id": "2",
       "vehiculoId": 2,
       "descripcion": "Sustitución de frenos",
       "coste": 250,
       "finalizada": false
+    },
+    {
+      "id": "3",
+      "vehiculoId": 3,
+      "descripcion": "Revisión general",
+      "coste": 120,
+      "finalizada": true
+    },
+    {
+      "id": "4",
+      "vehiculoId": 4,
+      "descripcion": "Cambio de batería",
+      "coste": 140,
+      "finalizada": true
+    },
+    {
+      "id": "5",
+      "vehiculoId": 5,
+      "descripcion": "Alineación y equilibrado",
+      "coste": 60,
+      "finalizada": true
+    },
+    {
+      "id": "6",
+      "vehiculoId": 6,
+      "descripcion": "Cambio de neumáticos (2)",
+      "coste": 220,
+      "finalizada": false
+    },
+    {
+      "id": "7",
+      "vehiculoId": 7,
+      "descripcion": "Cambio de filtros",
+      "coste": 45,
+      "finalizada": true
+    },
+    {
+      "id": "8",
+      "vehiculoId": 8,
+      "descripcion": "Diagnóstico de motor",
+      "coste": 75,
+      "finalizada": true
+    },
+    {
+      "id": "9",
+      "vehiculoId": 9,
+      "descripcion": "Sustitución de embrague",
+      "coste": 950,
+      "finalizada": false
+    },
+    {
+      "id": "10",
+      "vehiculoId": 10,
+      "descripcion": "Cambio de pastillas de freno",
+      "coste": 180,
+      "finalizada": true
+    },
+    {
+      "id": "11",
+      "vehiculoId": 11,
+      "descripcion": "Reparación aire acondicionado",
+      "coste": 320,
+      "finalizada": false
+    },
+    {
+      "id": "14",
+      "vehiculoId": 13,
+      "descripcion": "Cambio de pastillas traseras",
+      "coste": 160,
+      "finalizada": false
+    },
+    {
+      "id": "15",
+      "vehiculoId": 14,
+      "descripcion": "Cambio de correa auxiliar",
+      "coste": 110,
+      "finalizada": true
+    },
+    {
+      "id": "16",
+      "vehiculoId": 14,
+      "descripcion": "Reparación pinchazo",
+      "coste": 20,
+      "finalizada": true
+    },
+    {
+      "id": "17",
+      "vehiculoId": 15,
+      "descripcion": "Revisión pre-ITV",
+      "coste": 70,
+      "finalizada": true
+    },
+    {
+      "id": "18",
+      "vehiculoId": 15,
+      "descripcion": "Cambio de amortiguadores delanteros",
+      "coste": 480,
+      "finalizada": false
+    },
+    {
+      "id": "19",
+      "vehiculoId": 16,
+      "descripcion": "Cambio de bujías",
+      "coste": 90,
+      "finalizada": true
+    },
+    {
+      "id": "20",
+      "vehiculoId": 16,
+      "descripcion": "Cambio de aceite",
+      "coste": 85,
+      "finalizada": true
+    },
+    {
+      "id": "21",
+      "vehiculoId": 17,
+      "descripcion": "Sustitución discos y pastillas",
+      "coste": 520,
+      "finalizada": false
+    },
+    {
+      "id": "22",
+      "vehiculoId": 17,
+      "descripcion": "Cambio de filtro de combustible",
+      "coste": 65,
+      "finalizada": true
+    },
+    {
+      "id": "23",
+      "vehiculoId": 18,
+      "descripcion": "Cambio de neumáticos (4)",
+      "coste": 520,
+      "finalizada": true
+    },
+    {
+      "id": "24",
+      "vehiculoId": 18,
+      "descripcion": "Alineación",
+      "coste": 40,
+      "finalizada": true
+    },
+    {
+      "id": "25",
+      "vehiculoId": 1,
+      "descripcion": "Cambio de líquido refrigerante",
+      "coste": 55,
+      "finalizada": true
+    },
+    {
+      "id": "26",
+      "vehiculoId": 2,
+      "descripcion": "Sustitución de alternador",
+      "coste": 390,
+      "finalizada": false
+    },
+    {
+      "id": "27",
+      "vehiculoId": 3,
+      "descripcion": "Cambio de faro delantero",
+      "coste": 210,
+      "finalizada": true
+    },
+    {
+      "id": "28",
+      "vehiculoId": 4,
+      "descripcion": "Cambio de sensor ABS",
+      "coste": 170,
+      "finalizada": false
+    },
+    {
+      "id": "29",
+      "vehiculoId": 7,
+      "descripcion": "Reparación elevalunas",
+      "coste": 150,
+      "finalizada": true
+    },
+    {
+      "id": "30",
+      "vehiculoId": 10,
+      "descripcion": "Limpieza de inyectores",
+      "coste": 130,
+      "finalizada": false
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
