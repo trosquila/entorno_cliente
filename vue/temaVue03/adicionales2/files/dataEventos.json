@@ -1,0 +1,47 @@
+{
+  "eventos": [
+    {
+      "id": 1,
+      "nombre": "Carrera Popular Salamanca",
+      "fecha": "2025-04-15",
+      "ubicacion": "Plaza Mayor, Salamanca",
+      "plazasDisponibles": 150
+    },
+    {
+      "id": 2,
+      "nombre": "Torneo de Pádel Ciudad de Salamanca",
+      "fecha": "2025-05-10",
+      "ubicacion": "Polideportivo Helmántico",
+      "plazasDisponibles": 32
+    },
+    {
+      "id": 3,
+      "nombre": "Natación Maratón Río Tormes",
+      "fecha": "2025-06-22",
+      "ubicacion": "Río Tormes, Salamanca",
+      "plazasDisponibles": 60
+    },
+    {
+      "id": 4,
+      "nombre": "Torneo de Baloncesto 3x3",
+      "fecha": "2025-07-05",
+      "ubicacion": "Pabellón Municipal Las Pistas",
+      "plazasDisponibles": 0
+    },
+    {
+      "id": 5,
+      "nombre": "Ciclismo Urbano Salamanca",
+      "fecha": "2025-08-18",
+      "ubicacion": "Parque de la Alamedilla",
+      "plazasDisponibles": 80
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "admin",
+      "rol": "admin",
+      "inscripciones": []
+    }
+  ]
+}
